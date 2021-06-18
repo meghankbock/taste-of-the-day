@@ -1,2 +1,2 @@
-# project-1
-Project 1 - Interactive Front-End Project
+# taste-of-the-day
+Taste of the Day - Meal Planner Pal
