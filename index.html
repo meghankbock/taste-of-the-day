@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Taste of the Day</title>
+  </head>
+  <body>
+    <!-- Header and Navigation -->
+    <section class="totd-section">
+      <header>
+        <h1 id="totd-js" class="totd">Taste of the Day</h1>
+      </header>
+    </section>
+    <section class="nav-section">
+      <nav>
+        <ul id="nav-js" class="nav-css">
+          <li>Recipes</li>
+          <li>Calendar</li>
+        </ul>
+      </nav>
+    </section>
+
+    <!-- Description Container-->
+    <section>
+      <div>Description</div>
+    </section>
+
+    <!-- Search Recipe container -->
+    <section id="search-container">
+      <!-- form container -->
+      <form>
+        <div>
+          <label for="name">Search Recipe:</label>
+          <input type="text" name="name" id="search-text" required />
+        </div>
+        <label>Choose Meal Type</label>
+        <select>
+          <option id="search-meal-type" value="">
+            -- Please choose an option--
+          </option>
+        </select>
+        <div id="search-submit">
+          <input type="submit" value="Seach" />
+        </div>
+      </form>
+    </section>
+
+    <!-- search result container-->
+    <section id="search-results">
+      <div></div>
+    </section>
+
+    <!-- Weekly Calendar -->
+    <section id="calendar-container">
+      <div id="sunday-container">
+        <h2>Sunday</h2>
+      </div>
+      <div id="monday-container">
+        <h2>Monday</h2>
+      </div>
+      <div id="tuesday-container">
+        <h2>Tuesday</h2>
+      </div>
+      <div id="wednesday-container">
+        <h2>Wednesday</h2>
+      </div>
+      <div id="thursday-container">
+        <h2>Thursday</h2>
+      </div>
+      <div id="friday-container">
+        <h2>Friday</h2>
+      </div>
+      <div id="saturday-container">
+        <h2>Saturday</h2>
+      </div>
+    </section>
+
+    <!-- Trash Button -->
+    <section id="recipe-trash">
+      <h2>Trash</h2>
+    </section>
+
+    <!-- Footer -->
+    <footer></footer>
+  </body>
+</html>
