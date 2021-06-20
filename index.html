@@ -30,59 +30,91 @@
     <!-- Search Recipe container -->
     <section id="search-container">
       <!-- form container -->
-      <form>
+      <form id="search-form">
         <div>
           <label for="name">Search Recipe:</label>
-          <input type="text" name="name" id="search-text" required />
+          <input type="text" name="name" id="search-text" />
         </div>
         <label>Choose Meal Type</label>
-        <select>
-          <option id="search-meal-type" value="">
+        <select id="search-meal-type" name="mealType">
+          <option value="" disabled selected>
             -- Please choose an option--
           </option>
+          <option value="Breakfast">Breakfast</option>
+          <option value="Lunch">Lunch</option>
+          <option value="Dinner">Dinner</option>
+          <option value="Snack">Snack</option>
         </select>
-        <div id="search-submit">
-          <input type="submit" value="Seach" />
-        </div>
+        <label>Choose Cuisine Type</label>
+        <select id="search-cuisine-type" name="cuisineType">
+          <option value="" disabled selected>
+            -- Please choose an option--
+          </option>
+          <option value="American">American</option>
+          <option value="Asian">Asian</option>
+          <option value="Caribbean">Caribbean</option>
+          <option value="Chinese">Chinese</option>
+          <option value="Indian">Indian</option>
+          <option value="Italian">Italian</option>
+          <option value="Japanese">Japanese</option>
+          <option value="Kosher">Kosher</option>
+          <option value="Mediterranean">Mediterranean</option>
+          <option value="Mexican">Mexican</option>
+          <option value="Middle Eastern">Middle Eastern</option>
+          <option value="South American">South American</option>
+        </select>
+        <button type="submit" id="search-submit" class="btn">
+          Search Recipe
+        </button>
       </form>
     </section>
 
-    <!-- search result container-->
-    <section id="search-results">
-      <div></div>
+    <!-- Search Result Recipes -->
+    <section id="search-results-container">
+      <h2 class="subtitle">
+        Showing Recipes for: <span id="recipe-search-term"></span>
+      </h2>
+      <div id="search-results"></div>
     </section>
 
     <!-- Weekly Calendar -->
     <section id="calendar-container">
       <div id="sunday-container">
-        <h2>Sunday</h2>
+        <h3>Sunday</h3>
       </div>
       <div id="monday-container">
-        <h2>Monday</h2>
+        <h3>Monday</h3>
       </div>
       <div id="tuesday-container">
-        <h2>Tuesday</h2>
+        <h3>Tuesday</h3>
       </div>
       <div id="wednesday-container">
-        <h2>Wednesday</h2>
+        <h3>Wednesday</h3>
       </div>
       <div id="thursday-container">
-        <h2>Thursday</h2>
+        <h3>Thursday</h3>
       </div>
       <div id="friday-container">
-        <h2>Friday</h2>
+        <h3>Friday</h3>
       </div>
       <div id="saturday-container">
-        <h2>Saturday</h2>
+        <h3>Saturday</h3>
       </div>
     </section>
 
     <!-- Trash Button -->
     <section id="recipe-trash">
-      <h2>Trash</h2>
+      <h3>Trash</h3>
     </section>
 
     <!-- Footer -->
-    <footer></footer>
+    <footer>
+      <p>
+        Designed by: Alexis Vega, Dario Gomez, Maria Salome Villarreal, Meghan
+        Bock, Randolph Davis
+      </p>
+    </footer>
+
+    <script src="homepage.js"></script>
   </body>
 </html>
