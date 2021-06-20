@@ -23,12 +23,60 @@
     </section>
 
     <!-- Single Recipe Container -->
-    <section>
-      <div id="single-recipe-container"></div>
-      <div id="single-recipe"></div>
-      <h2 id="save-recipe-button">Save to Calendar</h2>
+    <section id="single-recipe-container">
+      <div id="single-recipe">
+      <div class="ml-md-auto w-100 w-md-auto">
+        <button id="save-recipe-button" data-toggle="modal"
+          data-target="#task-form-modal"><span class="oi oi-plus mr-2"></span>Save to Calendar</button>
+      </div>
+    </section>
+      
+    <!-- modal form-->
+    <section id="modal-form">
+      <div>
+        <form>
+            <label>Day of the Week</label>
+          <select id="day-input">
+            <option value="" disabled selected>
+                -- Please choose an option --
+            </option>
+            <option value="Sunday">Sunday</option>
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday">Friday</option>
+            <option value="Saturday">Saturday</option>
+          </select>  
+        </form> 
+      </div>
+
+      <div>
+        <form> 
+          <label>Meal Type</label>
+          <select id="meal-input">
+            <option value="" disabled selected>
+              -- Please choose an option -- 
+            </option>
+            <option value="Breakfast">Breakfast</option>
+            <option value="Lunch">Lunch</option>
+            <option value="Dinner">Dinner</option>
+            <option value="Snack">Snack</option>
+          </select>
+        </form>
+      </div>
+
+      <div>
+        <button id="modal-close-button">Close</button>
+      </div>
+
+      <div>
+        <button id="modal-save-button">Save</button>
+      </div>
+
     </section>
 
+  
     <!-- Search result container -->
     <section id="search-results-container">
       <h2>Showing Results for:<h2>
