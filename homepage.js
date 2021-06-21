@@ -104,7 +104,7 @@ var displayRecipes = function (recipes, searchText, mealType, cuisineType) {
 
     var recipeEl = document.createElement("a");
     //recipeEl.classList = "";
-    recipeEl.setAttribute("href", "./index-page2.html?recipeId=" + recipeId + "&recipeName=" + recipeName);
+    recipeEl.setAttribute("href", "./single-recipe.html?recipeId=" + recipeId + "&recipeName=" + recipeName);
 
     var titleEl = document.createElement("span");
     titleEl.textContent = recipeName;
