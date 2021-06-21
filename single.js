@@ -1,6 +1,9 @@
+var currentDate = moment().format('dddd, MMMM Do, YYYY')
 var recipeNameEl = document.querySelector("#recipe-name");
 var recipeContainerEl = document.querySelector("#single-recipe-container");
 var limitWarningEl = document.querySelector("#limit-warning");
+
+$("#currentDay").text(currentDate);
 
 var getRecipeName = function() {
     var queryString = document.location.search;

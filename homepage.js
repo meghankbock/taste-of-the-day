@@ -1,10 +1,13 @@
 // global variables
+var currentDate = moment().format('dddd, MMMM Do, YYYY')
 var searchFormEl = document.querySelector("#search-form");
 var searchTextInputEl = document.querySelector("#search-text");
 var searchMealTypeEl = document.querySelector("#search-meal-type");
 var searchCuisineTypeEl = document.querySelector("#search-cuisine-type");
 var searchResultsEl = document.querySelector("#search-results");
 var recipeSearchTerm = document.querySelector("#recipe-search-term");
+
+$("#currentDay").text(currentDate);
 
 var formSubmitHandler = function (event) {
   event.preventDefault();
