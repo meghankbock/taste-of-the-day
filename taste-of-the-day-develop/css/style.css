@@ -30,7 +30,8 @@
 
 .search-css {
     display: inline-flex;
-    
+    justify-content: space-evenly;
+    width: 100%;
 }
 
 #search-container {
@@ -82,13 +83,12 @@
 }
 
 /*trash*/
-.recipe-trash{
+#recipe-trash{
     margin: 0 auto 50px;
 }
 
 /*footer*/
 footer {
-    background: #fce138;
     width: 100%;
     padding: 20px 15px;
     display: flex;
@@ -97,7 +97,7 @@ footer {
 }
 
 footer p {
-     color: #024e76;
     font-size: 15px;
     margin: 0;
+    font-family: "Open Sans"; ;
 }
