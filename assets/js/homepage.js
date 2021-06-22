@@ -122,11 +122,11 @@ $("#modal-form .btn-save").click(function () {
 
 });
 
-var createRecipe = function (recipeName, recipeMealType, recipeUrl, calendarDay) {
+var renderRecipe = function (recipeName, recipeMealType, recipeUrl, calendarDay) {
   var dayLi = $("<li>");
   var taskSpan = $("<span>").text(recipeName);
   var taskP = $("<p>").text(recipeMealType);
-  var taskA = $("<a>").text("Preparation Instructions");
+  var taskA = $("<a>").text("Instructions");
   taskA.setAttribute("href",recipeUrl);
 
   dayLi.appendChild(taskSpan, taskP, taskA);
@@ -137,7 +137,7 @@ var createRecipe = function (recipeName, recipeMealType, recipeUrl, calendarDay)
 var loadRecipeLocalStorage = function () {
     recipeObj = JSON.parse(localStorage.getItem("recipes"));
   
-    // if nothing in localStorage, create a new object to track all task status arrays
+    // if nothing in localStorage, create a new object to track all day arrays
     if (!recipeObj) {
       recipeObj = {
         sunday: [],
@@ -153,12 +153,11 @@ var loadRecipeLocalStorage = function () {
   
     // loop over object properties and add event text to page
     $.each(recipeObj, function (day, arr) {
-      arr.forEach(function (event) {
-        createRecipe(recipe.name, recipe.mealType, recipe.url, day);
+      arr.forEach(function (recipe) {
+        renderRecipe(recipe.name, recipe.mealType, recipe.url, day);
       });
     });
   };
-};
 
 var saveRecipeLocalStorage = function () {
   localStorage.setItem("recipes",JSON.stringify(recipeObj));
