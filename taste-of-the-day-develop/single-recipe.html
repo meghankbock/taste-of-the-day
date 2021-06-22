@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Taste of the Day</title>
+  </head>
+  <body>
+    <!-- Header and Navigation -->
+    <section class="totd-section">
+      <header>
+        <h1 id="totd-js" class="totd">Taste of the Day</h1>
+      </header>
+    </section>
+    <section class="nav-section">
+      <nav>
+        <ul id="nav-js" class="nav-css">
+          <li>Recipes</li>
+          <li>Calendar</li>
+        </ul>
+      </nav>
+    </section>
+
+
+    <!-- Search result container -->
+    <section id="search-results-container">
+      <h2>Showing Results for:<h2>
+      <div id="search-results"></div>
+
+  <!-- Single Recipe Container -->
+    <div id="single-recipe"></div>
+    <div class="ml-md-auto w-100 w-md-auto">
+      <button id="save-recipe-button" data-toggle="modal"
+        data-target="#task-form-modal"><span class="oi oi-plus mr-2"></span>Save to Calendar</button>
+    </div>
+    </section>
+      
+    <!-- modal form-->
+    <section id="modal-form">
+      <div>
+        <form>
+            <label>Day of the Week</label>
+          <select id="day-input">
+            <option value="" disabled selected>
+                -- Please choose an option --
+            </option>
+            <option value="Sunday">Sunday</option>
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday">Friday</option>
+            <option value="Saturday">Saturday</option>
+          </select>  
+        </form> 
+      </div>
+
+      <div>
+        <form> 
+          <label>Meal Type</label>
+          <select id="meal-input">
+            <option value="" disabled selected>
+              -- Please choose an option -- 
+            </option>
+            <option value="Breakfast">Breakfast</option>
+            <option value="Lunch">Lunch</option>
+            <option value="Dinner">Dinner</option>
+            <option value="Snack">Snack</option>
+          </select>
+        </form>
+      </div>
+
+      <div>
+        <button id="modal-close-button">Close</button>
+      </div>
+
+      <div>
+        <button id="modal-save-button">Save</button>
+      </div>
+
+    </section>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.slim.js" integrity="sha512-HNbo1d4BaJjXh+/e6q4enTyezg5wiXvY3p/9Vzb20NIvkJghZxhzaXeffbdJuuZSxFhJP87ORPadwmU9aN3wSA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.slim.min.js" integrity="sha512-6ORWJX/LrnSjBzwefdNUyLCMTIsGoNP6NftMy2UAm1JBm6PRZCO1d7OHBStWpVFZLO+RerTvqX/Z9mBFfCJZ4A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="single.js"></script>
+  </body>
+</html>
