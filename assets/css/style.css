@@ -187,6 +187,7 @@ header nav ul li a:hover {
 
 ul.list-group {
     min-width: 20rem;
+    min-height: 130px;
     max-width: 21px;
     text-align: left;
     list-style: none;
