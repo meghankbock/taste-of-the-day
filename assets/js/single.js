@@ -2,7 +2,16 @@ var currentDate = moment().format('dddd, MMMM Do, YYYY')
 var recipeNameEl = document.querySelector("#single-recipe");
 var recipeContainerEl = document.querySelector("#single-recipe-container");
 var limitWarningEl = document.querySelector("#limit-warning");
-var recipeObj = {};
+var recipeObj = {
+        sunday: [],
+          monday: [],
+          tuesday: [],
+          wednesday: [],
+          thursday: [],
+          friday: [],
+          saturday: [],
+};
+  console.log(recipeObj);
 var singleRecipe = {};
 
 $("#currentDay").text(currentDate);
@@ -88,21 +97,6 @@ var displayRecipe = function(recipe) {
 
     recipeContainerEl.appendChild(instructionsButton);
 };
-
-var renderRecipe = function (recipeName, recipeMealType, recipeUrl, calendarDay) {
-    var dayLi = document.createElement("li");
-    var recipeSpan = document.createElement("span");
-    recipeSpan.textContent = recipeName;
-    var recipeP = document.createElement("p");
-    recipeP.textContent = recipeMealType;
-    var recipeA = document.createElement("a");
-    recipeA.textContent = "Instructions";
-    recipeA.setAttribute("href",recipeUrl);
-  
-    dayLi.appendChild(recipeSpan, recipeP, recipeA);
-  
-    $("#list-"+ calendarDay).appendChild(dayLi);
-  };
   
   var loadRecipeLocalStorage = function () {
       console.log("load local storage");
@@ -122,13 +116,6 @@ var renderRecipe = function (recipeName, recipeMealType, recipeUrl, calendarDay)
         };
         console.log("recipe object: " + recipeObj);
       }
-    
-      // loop over object properties and add event text to page
-      $.each(recipeObj, function (day, arr) {
-        arr.forEach(function (recipe) {
-          renderRecipe(recipe.name, recipe.mealType, recipe.url, day);
-        });
-      });
     };
   
   var saveRecipeLocalStorage = function () {
@@ -136,8 +123,8 @@ var renderRecipe = function (recipeName, recipeMealType, recipeUrl, calendarDay)
   }
 
   $("#modal-form #modal-save-button").click(function () {
-    var day = $("#day-input").val();
-    var mealType = $("#meal-input").val();
+    var day = $("#day-input").val().toLowerCase();
+    var mealType = $("#meal-input").val().toLowerCase();
     var recipeName = singleRecipe.label;
     var recipeUrl = singleRecipe.url;
     console.log("recipe URL: " + recipeUrl);
@@ -149,7 +136,6 @@ var renderRecipe = function (recipeName, recipeMealType, recipeUrl, calendarDay)
         alert("You must provide input for both Day of the Week and Meal Type");
     }
     else {
-            //renderRecipe(recipeName, mealType, recipeUrl, day);
         
             // close modal
             //$("#modal-form").modal("hide");
