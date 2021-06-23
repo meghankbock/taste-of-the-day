@@ -213,15 +213,15 @@ $(".list-group").on("blur", "select", function () {
 });
 
 $(".day-of-week .list-group").sortable({
-  connectWith: $(".day-of-week"),
+  connectWith: $(".day-of-week .list-group"),
   scroll: false,
   tolerance: "pointer",
   helper: "clone",
-  activate: function (event) {
+  activate: function (event, ui) {
     $(this).addClass("dropover");
     $(".bottom-trash").addClass("bottom-trash-drag");
   },
-  deactivate: function(event) {
+  deactivate: function(event, ui) {
     $(this).removeClass("dropover");
     $(".bottom-trash").removeClass("bottom-trash-drag");
   },
@@ -231,7 +231,7 @@ $(".day-of-week .list-group").sortable({
   out: function (event) {
     $(event.target).removeClass("dropover-active");
   },
-  update: function (event) {
+  update: function () {
     // array to store the task data in
     var tempArr = [];
 
