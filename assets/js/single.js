@@ -1,7 +1,9 @@
 var currentDate = moment().format('dddd, MMMM Do, YYYY')
-var recipeNameEl = document.querySelector("#recipe-name");
+var recipeNameEl = document.querySelector("#single-recipe");
 var recipeContainerEl = document.querySelector("#single-recipe-container");
 var limitWarningEl = document.querySelector("#limit-warning");
+var recipeObj = {};
+var singleRecipe = {};
 
 $("#currentDay").text(currentDate);
 
@@ -40,6 +42,7 @@ var getRecipe = function(recipeId) {
         if(response.ok) {
             response.json().then(function(data) {
                 console.log(data);
+                singleRecipe = data.recipe;
                 displayRecipe(data.recipe);
 
                 if(response.headers.get("Link")) {
@@ -55,7 +58,7 @@ var getRecipe = function(recipeId) {
 };
 
 var displayRecipe = function(recipe) {
-    recipeName = recipe.label;
+    var recipeName = recipe.label;
     recipeNameEl.textContent = recipeName;
     if(recipe.length === 0) {
         alert("error");
@@ -86,46 +89,28 @@ var displayRecipe = function(recipe) {
     recipeContainerEl.appendChild(instructionsButton);
 };
 
-$("#modal-form #modal-save-button").click(function () {
-    var day = $("#day-input").val;
-    var meal = $("#meal-input").val;
-
-    if(!day || !meal) {
-        alert("You must provide input for both Day of the Week and Meal Type");
-    }
-    else {
-            createTask(taskText, taskDate, "toDo");
-        
-            // close modal
-            $("#task-form-modal").modal("hide");
-        
-            // save in tasks array
-            tasks.toDo.push({
-              text: taskText,
-              date: taskDate,
-            });
-        
-            saveTasks();
-    }
-});
-
 var renderRecipe = function (recipeName, recipeMealType, recipeUrl, calendarDay) {
-    var dayLi = $("<li>");
-    var taskSpan = $("<span>").text(recipeName);
-    var taskP = $("<p>").text(recipeMealType);
-    var taskA = $("<a>").text("Instructions");
-    taskA.setAttribute("href",recipeUrl);
+    var dayLi = document.createElement("li");
+    var recipeSpan = document.createElement("span");
+    recipeSpan.textContent = recipeName;
+    var recipeP = document.createElement("p");
+    recipeP.textContent = recipeMealType;
+    var recipeA = document.createElement("a");
+    recipeA.textContent = "Instructions";
+    recipeA.setAttribute("href",recipeUrl);
   
-    dayLi.appendChild(taskSpan, taskP, taskA);
+    dayLi.appendChild(recipeSpan, recipeP, recipeA);
   
     $("#list-"+ calendarDay).appendChild(dayLi);
   };
   
   var loadRecipeLocalStorage = function () {
+      console.log("load local storage");
       recipeObj = JSON.parse(localStorage.getItem("recipes"));
     
       // if nothing in localStorage, create a new object to track all day arrays
       if (!recipeObj) {
+          console.log("local storage empty");
         recipeObj = {
           sunday: [],
           monday: [],
@@ -149,5 +134,36 @@ var renderRecipe = function (recipeName, recipeMealType, recipeUrl, calendarDay)
   var saveRecipeLocalStorage = function () {
     localStorage.setItem("recipes",JSON.stringify(recipeObj));
   }
+
+  $("#modal-form #modal-save-button").click(function () {
+    var day = $("#day-input").val();
+    var mealType = $("#meal-input").val();
+    var recipeName = singleRecipe.label;
+    var recipeUrl = singleRecipe.url;
+    console.log("recipe URL: " + recipeUrl);
+    console.log("day: " + day);
+    console.log("day object: " + recipeObj.day);
+
+    if(!day || !mealType) {
+        alert("You must provide input for both Day of the Week and Meal Type");
+    }
+    else {
+            //renderRecipe(recipeName, mealType, recipeUrl, day);
+        
+            // close modal
+            //$("#modal-form").modal("hide");
+        
+            // save in tasks array
+            recipeObj.day.push({
+              name: recipeName,
+              mealType: mealType,
+              url: recipeUrl,
+            });
+        
+            saveRecipeLocalStorage();
+    }
+});
+
+loadRecipeLocalStorage();
 
 getRecipeName();
