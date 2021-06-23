@@ -118,20 +118,19 @@ var displayRecipes = function (recipes, searchText, mealType, cuisineType) {
   }
 };
 
-$("#modal-form .btn-save").click(function () {
-
-});
-
 var renderRecipe = function (recipeName, recipeMealType, recipeUrl, calendarDay) {
-  var dayLi = $("<li>");
-  var taskSpan = $("<span>").text(recipeName);
-  var taskP = $("<p>").text(recipeMealType);
-  var taskA = $("<a>").text("Instructions");
-  taskA.setAttribute("href",recipeUrl);
-
-  dayLi.appendChild(taskSpan, taskP, taskA);
-
-  $("#"+ calendarDay).appendChild(dayLi);
+    var dayLi = document.createElement("li");
+    var recipeSpan = document.createElement("span");
+    recipeSpan.textContent = recipeName;
+    var recipeP = document.createElement("p");
+    recipeP.textContent = recipeMealType;
+    var recipeA = document.createElement("a");
+    recipeA.textContent = "Instructions";
+    recipeA.setAttribute("href",recipeUrl);
+  
+    dayLi.appendChild(recipeSpan, recipeP, recipeA);
+  
+    $("#list-"+ calendarDay).appendChild(dayLi);
 };
 
 var loadRecipeLocalStorage = function () {
@@ -162,5 +161,7 @@ var loadRecipeLocalStorage = function () {
 var saveRecipeLocalStorage = function () {
   localStorage.setItem("recipes",JSON.stringify(recipeObj));
 }
+
+loadRecipeLocalStorage();
 
 searchFormEl.addEventListener("submit", formSubmitHandler);
