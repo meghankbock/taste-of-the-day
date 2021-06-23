@@ -72,7 +72,7 @@ var getRecipes = function (searchText, mealType, cuisineType) {
       }
     })
     .catch(function (error) {
-     // will need to replace with modal
+      // will need to replace with modal
       alert("unable to connect");
     });
 };
@@ -119,49 +119,68 @@ var displayRecipes = function (recipes, searchText, mealType, cuisineType) {
 };
 
 var renderRecipe = function (recipeName, recipeMealType, recipeUrl, calendarDay) {
-    var dayLi = document.createElement("li");
-    var recipeSpan = document.createElement("span");
-    recipeSpan.textContent = recipeName;
-    var recipeP = document.createElement("p");
-    recipeP.textContent = recipeMealType;
-    var recipeA = document.createElement("a");
-    recipeA.textContent = "Instructions";
-    recipeA.setAttribute("href",recipeUrl);
-  
-    dayLi.appendChild(recipeSpan, recipeP, recipeA);
-  
-    $("#list-"+ calendarDay).appendChild(dayLi);
+  var dayLi = document.createElement("li");
+  var recipeSpan = document.createElement("span");
+  recipeSpan.textContent = recipeName;
+  var recipeP = document.createElement("p");
+  recipeP.textContent = recipeMealType;
+  var recipeA = document.createElement("a");
+  recipeA.textContent = "Instructions";
+  recipeA.setAttribute("href", recipeUrl);
+
+  dayLi.appendChild(recipeSpan, recipeP, recipeA);
+
+  $("#list-" + calendarDay).appendChild(dayLi);
 };
 
 var loadRecipeLocalStorage = function () {
-    recipeObj = JSON.parse(localStorage.getItem("recipes"));
-  
-    // if nothing in localStorage, create a new object to track all day arrays
-    if (!recipeObj) {
-      recipeObj = {
-        sunday: [],
-        monday: [],
-        tuesday: [],
-        wednesday: [],
-        thursday: [],
-        friday: [],
-        saturday: [],
-      };
-      return false;
-    }
-  
-    // loop over object properties and add event text to page
-    $.each(recipeObj, function (day, arr) {
-      arr.forEach(function (recipe) {
-        renderRecipe(recipe.name, recipe.mealType, recipe.url, day);
-      });
+  recipeObj = JSON.parse(localStorage.getItem("recipes"));
+
+  // if nothing in localStorage, create a new object to track all day arrays
+  if (!recipeObj) {
+    recipeObj = {
+      sunday: [],
+      monday: [],
+      tuesday: [],
+      wednesday: [],
+      thursday: [],
+      friday: [],
+      saturday: [],
+    };
+    return false;
+  }
+
+  // loop over object properties and add event text to page
+  $.each(recipeObj, function (day, arr) {
+    arr.forEach(function (recipe) {
+      renderRecipe(recipe.name, recipe.mealType, recipe.url, day);
     });
-  };
+  });
+};
 
 var saveRecipeLocalStorage = function () {
-  localStorage.setItem("recipes",JSON.stringify(recipeObj));
+  localStorage.setItem("recipes", JSON.stringify(recipeObj));
 }
 
 loadRecipeLocalStorage();
+
+// trash icon can be dropped onto
+$("#recipe-trash").droppable({
+  accept: ".day-of-week .list-group-item",
+  tolerance: "touch",
+
+  drop: function (event, ui) {
+
+    // remove dragged element from the dom    ui.draggable.remove();    
+    $(".bottom-trash").removeClass("bottom-trash-active");
+  },
+  over: function (event, ui) {
+    console.log(ui);
+    $(".bottom-trash").addClass("bottom-trash-active");
+  },
+  out: function (event, ui) {
+    $(".bottom-trash").removeClass("bottom-trash-active");
+  }
+});
 
 searchFormEl.addEventListener("submit", formSubmitHandler);
