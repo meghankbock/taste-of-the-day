@@ -1,175 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Taste of the Day</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=en"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Taste of the Day</title>
-  <link rel="stylesheet" href="./assets/css/style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=en" />
-</head>
-
-<body>
-  <!-- Header and Navigation -->
-  <section class="totd-section">
-    <header>
-      <h1 id="totd-js" class="totd">Taste of the Day</h1>
-    </header>
-  </section>
-  <section class="nav-section">
-    <nav>
-      <ul id="nav-js" class="nav-css">
-        <button>Recipes</button>
-        <button>Calendar</button>
-      </ul>
-    </nav>
-  </section>
-
-  <!-- Description Container-->
-  <section class="description" id="description-container">
-    <div>Taste of the Day is here to make your meal time preperations a little bit easier. With everyones busy schedule
-      now-a-days, meal preperations is one area people usually don't make extra time for. With our website, you will be
-      able to search recipies depending on the meal type, and cuisine type and save it to a calender that has the meals
-      you are going to make for the week.
-      <br><br>
-      Once you have selected a recipe that you would like to make, you can save it to your calender to the day you want
-      to make that desired meal.
-      <br><br>
-      This website will help save you time and frustration with your weekly meal prep. No more having to figure out what
-      you are going to eat each and everyday.
-    </div>
-  </section>
-
-  <section class="search-css">
-    <!-- Search Recipe container -->
-    <section id="search-container">
-      <ul class="list">
-        <!-- form container -->
-        <form id="search-form">
-          <li>
-            <div>
-              <label for="name">Search Recipe:</label>
-              <input type="text" name="name" id="search-text" />
-            </div>
-          </li>
-          <li>
-            <label>Choose Meal Type</label>
-            <select id="search-meal-type" name="mealType">
-              <option value="" disabled selected>
-                -- Please choose an option--
-              </option>
-              <option value="Breakfast">Breakfast</option>
-              <option value="Lunch">Lunch</option>
-              <option value="Dinner">Dinner</option>
-              <option value="Snack">Snack</option>
-            </select>
-          </li>
-          <li>
-            <label>Choose Cuisine Type</label>
-            <select id="search-cuisine-type" name="cuisineType">
-              <option value="" disabled selected>
-                -- Please choose an option--
-              </option>
-              <option value="American">American</option>
-              <option value="Asian">Asian</option>
-              <option value="Caribbean">Caribbean</option>
-              <option value="Chinese">Chinese</option>
-              <option value="Indian">Indian</option>
-              <option value="Italian">Italian</option>
-              <option value="Japanese">Japanese</option>
-              <option value="Kosher">Kosher</option>
-              <option value="Mediterranean">Mediterranean</option>
-              <option value="Mexican">Mexican</option>
-              <option value="Middle Eastern">Middle Eastern</option>
-              <option value="South American">South American</option>
-            </select>
-          </li>
-          <li>
-            <button type="submit" id="search-submit" class="btn">
-              Search Recipe
-            </button>
-          </li>
-        </form>
-      </ul>
+  <body>
+    <!-- Header and Navigation -->
+    <section class="totd-section">
+      <header>
+        <h1 id="totd-js" class="totd">Taste of the Day</h1>
+      </header>
+    </section>
+    <section class="nav-section">
+      <nav>
+        <ul id="nav-js" class="nav-css">
+          <button>Recipes</button>
+          <button>Calendar</button>
+        </ul>
+      </nav>
     </section>
 
-    <!-- Search Result Recipes -->
-    <section id="search-results-container">
-      <h2 class="subtitle">
-        Showing Recipes for: <span id="recipe-search-term"></span>
-      </h2>
-      <div id="search-results"></div>
+    <!-- Description Container-->
+    <section class="description" id="description-container">
+      <div>
+        Taste of the Day is here to make your meal time preperations a little
+        bit easier. With everyones busy schedule now-a-days, meal preperations
+        is one area people usually don't make extra time for. With our website,
+        you will be able to search recipies depending on the meal type, and
+        cuisine type and save it to a calender that has the meals you are going
+        to make for the week. <br /><br />
+        Once you have selected a recipe that you would like to make, you can
+        save it to your calender to the day you want to make that desired meal.
+        <br /><br />
+        This website will help save you time and frustration with your weekly
+        meal prep. No more having to figure out what you are going to eat each
+        and everyday.
+      </div>
     </section>
-  </section>
-  
-  <!-- Current Date Displayed-->
-  <div>
-    <h3 id="currentDay"></h3>
-  </div>
 
-  <!-- Weekly Calendar -->
-  <section id="calendar-container">
-    <div id="sunday-container">
-      <h3>Sunday</h3>
-      <ul id="list-sunday" class="list-group"></ul>
-    </div>
-    <div id="monday-container">
-      <h3>Monday</h3>
-      <ul id="list-monday" class="list-group"></ul>
-    </div>
-    <div id="tuesday-container">
-      <h3>Tuesday</h3>
-      <ul id="list-tuesday" class="list-group"></ul>
-    </div>
-    <div id="wednesday-container">
-      <h3>Wednesday</h3>
-      <ul id="list-wednesday" class="list-group"></ul>
-    </div>
-    <div id="thursday-container">
-      <h3>Thursday</h3>
-      <ul id="list-thursday" class="list-group"></ul>
-    </div>
-    <div id="friday-container">
-      <h3>Friday</h3>
-      <ul id="list-friday" class="list-group"></ul>
-    </div>
-    <div id="saturday-container">
-      <h3>Saturday</h3>
-      <ul id="list-saturday" class="list-group"></ul>
-    </div>
-  </section>
+    <section class="search-css">
+      <!-- Search Recipe container -->
+      <section id="search-container">
+        <ul class="list">
+          <!-- form container -->
+          <form id="search-form">
+            <li>
+              <div>
+                <label for="name">Search Recipe:</label>
+                <input type="text" name="name" id="search-text" />
+              </div>
+            </li>
+            <li>
+              <label>Choose Meal Type</label>
+              <select id="search-meal-type" name="mealType">
+                <option value="" disabled selected>
+                  -- Please choose an option--
+                </option>
+                <option value="Breakfast">Breakfast</option>
+                <option value="Lunch">Lunch</option>
+                <option value="Dinner">Dinner</option>
+                <option value="Snack">Snack</option>
+              </select>
+            </li>
+            <li>
+              <label>Choose Cuisine Type</label>
+              <select id="search-cuisine-type" name="cuisineType">
+                <option value="" disabled selected>
+                  -- Please choose an option--
+                </option>
+                <option value="American">American</option>
+                <option value="Asian">Asian</option>
+                <option value="Caribbean">Caribbean</option>
+                <option value="Chinese">Chinese</option>
+                <option value="Indian">Indian</option>
+                <option value="Italian">Italian</option>
+                <option value="Japanese">Japanese</option>
+                <option value="Kosher">Kosher</option>
+                <option value="Mediterranean">Mediterranean</option>
+                <option value="Mexican">Mexican</option>
+                <option value="Middle Eastern">Middle Eastern</option>
+                <option value="South American">South American</option>
+              </select>
+            </li>
+            <li>
+              <button type="submit" id="search-submit" class="btn">
+                Search Recipe
+              </button>
+            </li>
+          </form>
+        </ul>
+      </section>
 
-  <!-- Trash Button -->
-  <section id="recipe-trash">
-    <button>Trash</button>
-  </section>
+      <!-- Search Result Recipes -->
+      <section id="search-results-container">
+        <h2 class="subtitle">
+          Showing Recipes for: <span id="recipe-search-term"></span>
+        </h2>
+        <div id="search-results"></div>
+      </section>
+    </section>
 
-  <!-- Footer -->
-  <footer>
-    <p>
-      Designed by: Alexis Vega, Dario Gomez, Maria Salome Villarreal, Meghan
-      Bock, Randolph Davis &copy;
-    </p>
-  </footer>
+    <!-- Current Date Displayed-->
+    <div>
+      <h3 id="currentDay"></h3>
+    </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"
-    integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.slim.js"
-    integrity="sha512-HNbo1d4BaJjXh+/e6q4enTyezg5wiXvY3p/9Vzb20NIvkJghZxhzaXeffbdJuuZSxFhJP87ORPadwmU9aN3wSA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.slim.min.js"
-    integrity="sha512-6ORWJX/LrnSjBzwefdNUyLCMTIsGoNP6NftMy2UAm1JBm6PRZCO1d7OHBStWpVFZLO+RerTvqX/Z9mBFfCJZ4A=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-  <script src="./assets/js/homepage.js"></script>
-</body>
+    <!-- Weekly Calendar -->
+    <section id="calendar-container">
+      <div id="sunday-container">
+        <h3>Sunday</h3>
+        <ul id="list-sunday" class="list-group"></ul>
+      </div>
+      <div id="monday-container">
+        <h3>Monday</h3>
+        <ul id="list-monday" class="list-group"></ul>
+      </div>
+      <div id="tuesday-container">
+        <h3>Tuesday</h3>
+        <ul id="list-tuesday" class="list-group"></ul>
+      </div>
+      <div id="wednesday-container">
+        <h3>Wednesday</h3>
+        <ul id="list-wednesday" class="list-group"></ul>
+      </div>
+      <div id="thursday-container">
+        <h3>Thursday</h3>
+        <ul id="list-thursday" class="list-group"></ul>
+      </div>
+      <div id="friday-container">
+        <h3>Friday</h3>
+        <ul id="list-friday" class="list-group"></ul>
+      </div>
+      <div id="saturday-container">
+        <h3>Saturday</h3>
+        <ul id="list-saturday" class="list-group"></ul>
+      </div>
+    </section>
 
+    <!-- Trash Button -->
+    <section id="recipe-trash">
+      <button>Trash</button>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>
+        Designed by: Alexis Vega, Dario Gomez, Maria Salome Villarreal, Meghan
+        Bock, Randolph Davis &copy;
+      </p>
+    </footer>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"
+      integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.slim.js"
+      integrity="sha512-HNbo1d4BaJjXh+/e6q4enTyezg5wiXvY3p/9Vzb20NIvkJghZxhzaXeffbdJuuZSxFhJP87ORPadwmU9aN3wSA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.slim.min.js"
+      integrity="sha512-6ORWJX/LrnSjBzwefdNUyLCMTIsGoNP6NftMy2UAm1JBm6PRZCO1d7OHBStWpVFZLO+RerTvqX/Z9mBFfCJZ4A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="./assets/js/homepage.js"></script>
+  </body>
 </html>

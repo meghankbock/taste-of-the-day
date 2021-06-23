@@ -1,121 +1,126 @@
 * {
-    margin: 0;
-    padding: 0 20px;
-    box-sizing: border-box;
-}
-/*page title*/
-.totd {
-    font-size: 60px;
-    font-family: 'Cinzel', serif;
-    text-align: center;
-    
-}
-/*nav buttons*/
-.nav-css{
-    text-align: left;
-    font-family: "Open Sans", serif;
-    margin: 20px;
-    padding: 20px 0 30px;
+  margin: 0;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 
-.description{
-    font-family: "Open Sans", serif;
-    font-size: 14px;
-    padding: 10px 5px 20px;
-    border: 1px solid black;
-    margin: 30px 50px;
+header {
+  background-image: url("background-photo.jpeg");
+  background-size: cover;
+}
+
+/*page title*/
+.totd {
+  font-size: 60px;
+  font-family: "Cinzel", serif;
+  text-align: center;
+}
+/*nav buttons*/
+.nav-css {
+  text-align: left;
+  font-family: "Open Sans", serif;
+  margin: 20px;
+  padding: 20px 0 30px;
+}
+
+.description {
+  font-family: "Open Sans", serif;
+  font-size: 14px;
+  padding: 10px 5px 20px;
+  border: 1px solid black;
+  margin: 30px 50px;
 }
 
 /*search container as whole*/
 
 .search-css {
-    font-family: "Open Sans", serif;
-    display: inline-flex;
-    justify-content: space-evenly;
-    width: 100%;
+  font-family: "Open Sans", serif;
+  display: inline-flex;
+  justify-content: space-evenly;
+  width: 100%;
 }
 
 .list {
-    font-family: "Open Sans", serif;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: left;
-    list-style: none;  
+  font-family: "Open Sans", serif;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: left;
+  list-style: none;
 }
 
 #search-container {
-    font-family: "Open Sans", serif;
-    border: 1px solid black;
-    display: flex;
-    flex-wrap: wrap;
-   padding: 10px;
-    justify-content: space-between;
+  font-family: "Open Sans", serif;
+  border: 1px solid black;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  justify-content: space-between;
 }
 
-#search-results-container{
-    font-family: "Open Sans", serif;
-    border: 1px solid black;
-    display: flex;
-    flex-wrap: wrap;
+#search-results-container {
+  font-family: "Open Sans", serif;
+  border: 1px solid black;
+  display: flex;
+  flex-wrap: wrap;
   padding: 10px;
-    justify-content: space-between;
+  justify-content: space-between;
 }
 #recipe-search-term {
-    font-family: "Open Sans", serif;
-    display: block;
-    align-items: left;
+  font-family: "Open Sans", serif;
+  display: block;
+  align-items: left;
 }
 
 /*calendar as whole*/
 #calendar-container {
-    font-family: "Open Sans", serif;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    list-style: none; 
-    margin: 50px 30px;
+  font-family: "Open Sans", serif;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  margin: 50px 30px;
 }
 /* calendar by day */
- #sunday-container {
-     border: 1px solid black;
- }
- #monday-container {
-    border: 1px solid black;
+#sunday-container {
+  border: 1px solid black;
+}
+#monday-container {
+  border: 1px solid black;
 }
 #tuesday-container {
-    border: 1px solid black;
+  border: 1px solid black;
 }
 #wednesday-container {
-    border: 1px solid black;
+  border: 1px solid black;
 }
 #thursday-container {
-    border: 1px solid black;
+  border: 1px solid black;
 }
 #friday-container {
-    border: 1px solid black;
+  border: 1px solid black;
 }
 #saturday-container {
-    border: 1px solid black;
+  border: 1px solid black;
 }
 
 /*trash*/
-#recipe-trash{
-    margin: 0 auto 50px;
+#recipe-trash {
+  margin: 0 auto 50px;
 }
 
 /*footer*/
 footer {
-    width: 100%;
-    padding: 20px 15px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+  width: 100%;
+  padding: 20px 15px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 footer p {
-    font-size: 15px;
-    margin: 0;
-    font-family: "Open Sans"; ;
+  font-size: 15px;
+  margin: 0;
+  font-family: "Open Sans";
 }
