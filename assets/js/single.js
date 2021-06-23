@@ -120,7 +120,7 @@ var renderRecipe = function (recipeName, recipeMealType, recipeUrl, calendarDay)
           friday: [],
           saturday: [],
         };
-        return false;
+        console.log("recipe object: " + recipeObj);
       }
     
       // loop over object properties and add event text to page
@@ -142,7 +142,8 @@ var renderRecipe = function (recipeName, recipeMealType, recipeUrl, calendarDay)
     var recipeUrl = singleRecipe.url;
     console.log("recipe URL: " + recipeUrl);
     console.log("day: " + day);
-    console.log("day object: " + recipeObj.day);
+    console.log("recipe object: " + recipeObj);
+    console.log("day object: " + recipeObj[day]);
 
     if(!day || !mealType) {
         alert("You must provide input for both Day of the Week and Meal Type");
@@ -154,7 +155,7 @@ var renderRecipe = function (recipeName, recipeMealType, recipeUrl, calendarDay)
             //$("#modal-form").modal("hide");
         
             // save in tasks array
-            recipeObj.day.push({
+            recipeObj[day].push({
               name: recipeName,
               mealType: mealType,
               url: recipeUrl,
