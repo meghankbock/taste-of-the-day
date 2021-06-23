@@ -8,21 +8,22 @@
     font-size: 60px;
     font-family: 'Cinzel', serif;
     text-align: center;
-    
+
 }
 /*nav buttons*/
 .nav-css{
-    text-align: left;
+    text-align: center;
     font-family: "Open Sans", serif;
     margin: 20px;
     padding: 20px 0 30px;
+    color: #F94D00;
 }
 
 .description{
     font-family: "Open Sans", serif;
     font-size: 14px;
     padding: 10px 5px 20px;
-    border: 1px solid black;
+    border: 5px solid black;
     margin: 30px 50px;
 }
 
@@ -46,7 +47,7 @@
 
 #search-container {
     font-family: "Open Sans", serif;
-    border: 1px solid black;
+    border: 5px solid black;
     display: flex;
     flex-wrap: wrap;
    padding: 10px;
@@ -55,7 +56,7 @@
 
 #search-results-container{
     font-family: "Open Sans", serif;
-    border: 1px solid black;
+    border: 5px solid black;
     display: flex;
     flex-wrap: wrap;
   padding: 10px;
@@ -76,29 +77,15 @@
     align-items: center;
     list-style: none; 
     margin: 50px 30px;
+    border: 5px solid black;
+    padding: 20px 20px;
 }
 /* calendar by day */
- #sunday-container {
-     border: 1px solid black;
- }
- #monday-container {
+
+.day-of-week {
     border: 1px solid black;
 }
-#tuesday-container {
-    border: 1px solid black;
-}
-#wednesday-container {
-    border: 1px solid black;
-}
-#thursday-container {
-    border: 1px solid black;
-}
-#friday-container {
-    border: 1px solid black;
-}
-#saturday-container {
-    border: 1px solid black;
-}
+
 
 /*trash*/
 #recipe-trash{
