@@ -1,5 +1,5 @@
 // global variables
-var currentDate = moment().format('dddd, MMMM Do, YYYY')
+var currentDate = moment().format('dddd, MMMM Do, YYYY');
 var searchFormEl = document.querySelector("#search-form");
 var searchTextInputEl = document.querySelector("#search-text");
 var searchMealTypeEl = document.querySelector("#search-meal-type");
@@ -7,8 +7,26 @@ var searchCuisineTypeEl = document.querySelector("#search-cuisine-type");
 var searchResultsEl = document.querySelector("#search-results");
 var recipeSearchTerm = document.querySelector("#recipe-search-term");
 var recipeObj = {};
+var dayArray = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
 
 $("#currentDay").text(currentDate);
+
+
+var updateDayHighlight = function () {
+  var currentDay = "";
+  currentDay = moment().format('dddd');
+  console.log("current day: " + currentDay.toUpperCase());
+
+  for (var i = 0; i < dayArray.length; i++) {
+    var dayContainer = $("#" + dayArray[i] + "-container");
+    dayContainer.classList = "day-of-week";
+    var dayHeader = dayContainer.children().first();
+    dayHeader.removeClass("day-header-current");
+    if(currentDay.toUpperCase() == dayArray[i].toUpperCase()) {
+      dayHeader.addClass("day-header-current");
+    }
+  }
+}
 
 var formSubmitHandler = function (event) {
   event.preventDefault();
@@ -107,7 +125,7 @@ var displayRecipes = function (recipes, searchText, mealType, cuisineType) {
     console.log(recipeId);
 
     var recipeEl = document.createElement("a");
-    //recipeEl.classList = "";
+    recipeEl.classList = "search-list-item";
     recipeEl.setAttribute("href", "./single-recipe.html?recipeId=" + recipeId + "&recipeName=" + recipeName);
 
     var titleEl = document.createElement("span");
@@ -119,18 +137,16 @@ var displayRecipes = function (recipes, searchText, mealType, cuisineType) {
 };
 
 var renderRecipe = function (recipeName, recipeMealType, recipeUrl, calendarDay) {
-  var dayLi = document.createElement("li");
-  var recipeSpan = document.createElement("span");
-  recipeSpan.textContent = recipeName;
-  var recipeP = document.createElement("p");
-  recipeP.textContent = recipeMealType;
-  var recipeA = document.createElement("a");
-  recipeA.textContent = "Instructions";
-  recipeA.setAttribute("href", recipeUrl);
+  var dayLi = $("<li>").addClass("list-group-item");;
+  var recipeSpan = $("<span>").text(recipeName);
+  recipeSpan.addClass("recipe-name");
+  var recipeP = $("<p>").text(recipeMealType);
+  var recipeA = $("<a>").text("Instructions");
+  recipeA.attr("href", recipeUrl);
 
-  dayLi.appendChild(recipeSpan, recipeP, recipeA);
+  dayLi.append(recipeSpan, recipeP, recipeA);
 
-  $("#list-" + calendarDay).appendChild(dayLi);
+  $("#list-" + calendarDay).append(dayLi);
 };
 
 var loadRecipeLocalStorage = function () {
@@ -147,13 +163,12 @@ var loadRecipeLocalStorage = function () {
       friday: [],
       saturday: [],
     };
-    return false;
   }
 
   // loop over object properties and add event text to page
-  $.each(recipeObj, function (day, arr) {
+  $.each(recipeObj, function (list, arr) {
     arr.forEach(function (recipe) {
-      renderRecipe(recipe.name, recipe.mealType, recipe.url, day);
+      renderRecipe(recipe.name, recipe.mealType, recipe.url, list);
     });
   });
 };
@@ -162,15 +177,98 @@ var saveRecipeLocalStorage = function () {
   localStorage.setItem("recipes", JSON.stringify(recipeObj));
 }
 
-loadRecipeLocalStorage();
+$(".list-group").on("click", "p", function () {
+  // get currnt text of p element
+  var text = $(this).text().trim();
+
+  // replace p element with new textarea
+  var mealTypeSelect = $("<select>").addClass("form-control");
+  mealTypeSelect.append(new Option("Breakfast", "Breakfast"));
+  mealTypeSelect.append(new Option("Lunch", "Lunch"));
+  mealTypeSelect.append(new Option("Dinner", "Dinner"));
+  mealTypeSelect.append(new Option("Snack", "Snack"));
+  mealTypeSelect.append(new Option("N/A", "N/A"));
+  $(this).replaceWith(mealTypeSelect);
+
+  // auto focus new element
+  mealTypeSelect.trigger("focus");
+});
+
+// editable field was un-focused
+$(".list-group").on("blur", "select", function () {
+  var text = $(this).val().trim();
+
+  var day = $(this).closest(".list-group").attr("id").replace("list-", "");
+  var index = $(this).closest(".list-group-item").index();
+
+  // update task in array and re-save to localstorage
+  recipeObj[day][index].text = text;
+  saveRecipeLocalStorage();
+
+  // recreate p element
+  var taskP = $("<p>").text(text);
+
+  // replace textarea with p element
+  $(this).replaceWith(taskP);
+});
+
+$(".day-of-week .list-group").sortable({
+  connectWith: $(".day-of-week"),
+  scroll: false,
+  tolerance: "pointer",
+  helper: "clone",
+  activate: function (event) {
+    $(this).addClass("dropover");
+    $(".bottom-trash").addClass("bottom-trash-drag");
+  },
+  deactivate: function(event) {
+    $(this).removeClass("dropover");
+    $(".bottom-trash").removeClass("bottom-trash-drag");
+  },
+  over: function (event) {
+    $(event.target).addClass("dropover-active");
+  },
+  out: function (event) {
+    $(event.target).removeClass("dropover-active");
+  },
+  update: function (event) {
+    // array to store the task data in
+    var tempArr = [];
+
+    // loop over current set of children in sortable list
+    $(this)
+      .children()
+      .each(function () {
+        var meal = $(this).find("p").text().trim();
+
+        var name = $(this).find("span").text().trim();
+
+        var url = $(this).find("a").text().trim();
+
+        // add task data to the temp array as an object
+        tempArr.push({
+          name: name,
+          mealType: meal,
+          url: url,
+        });
+      });
+
+    // trim down list's ID to match object property
+    var arrName = $(this).attr("id").replace("list-", "");
+
+    // update array on tasks object and save
+    recipeObj[arrName] = tempArr;
+    saveRecipeLocalStorage();
+  },
+});
 
 // trash icon can be dropped onto
 $("#recipe-trash").droppable({
-  accept: ".day-of-week .list-group-item",
+  accept: ".card .list-group-item",
   tolerance: "touch",
 
   drop: function (event, ui) {
-
+    ui.draggable.remove();
     // remove dragged element from the dom    ui.draggable.remove();    
     $(".bottom-trash").removeClass("bottom-trash-active");
   },
@@ -182,5 +280,14 @@ $("#recipe-trash").droppable({
     $(".bottom-trash").removeClass("bottom-trash-active");
   }
 });
+
+updateDayHighlight();
+
+setInterval(function () {
+  updateDayHighlight();
+}, 1000 * 60 * 5);
+
+
+loadRecipeLocalStorage();
 
 searchFormEl.addEventListener("submit", formSubmitHandler);
