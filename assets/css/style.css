@@ -5,13 +5,13 @@
 }
 body {
   background-image: url(../images/background-photo.jpeg);
-  background-size: cover;
+  background-size: 100%;
   font-family: "Open Sans", sans-serif;
 }
 
 /*page title*/
 .totd {
-  font-size: 60px;
+  font-size: 80px;
   font-family: "Cinzel", sans-serif;
   text-align: center;
   margin: 3rem;
@@ -28,7 +28,7 @@ header nav ul {
 
 header nav ul li a {
   padding: 10px 10px;
-  font-size: 1.3vw;
+  font-size: 1.8vw;
   color: #f94d00;
   text-decoration: none;
   font-family: "Cinzel", sans-serif;
@@ -84,8 +84,6 @@ header nav ul li a:hover {
   margin-bottom: 0.75rem;
 }
 
-#recipe-search-term {
-}
 
 .form-group {
   font-size: 16px;
@@ -320,10 +318,71 @@ footer p {
       margin-bottom: 5px;
   }
 
+  /* MEDIA QUERY FOR SMALLER DESKTOP SCREENS AND SMALLER */
+@media screen and (max-width: 980px) {
+  .totd {
+    margin: 0;
+    text-align: center;
+    font-size: 60px;
+}
+header nav ul li a {
+font-size: 20px;  
+}
+
+body {
+    background-size: 100%;
+}
+.description{
+    width: 100%;
+    margin: 0;
+}
+.search-css {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+}
+.list-group {
+    flex: 0 100%;
+    text-align: center;
+    justify-content: center;
+}
+}
+
+/* MEDIA QUERY FOR TABLETS AND SMALLER */
+@media screen and (max-width: 768px) {
+  .totd {
+    margin: 0;
+    text-align: center;
+    font-size: 60px;
+}
+header nav ul li a {
+font-size: 20px;  
+}
+
+body {
+    background-size: 100%;
+}
+.description{
+    width: 100%;
+    margin: 0;
+}
+.search-css {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+}
+.list-group {
+    flex: 0 100%;
+    text-align: center;
+    justify-content: center;
+}
+}
+
   @media screen and (max-width: 575px) {
     .totd {
         margin: 0;
         text-align: center;
+        font-size: 60px;
     }
     header nav ul li a {
     font-size: 20px;  
