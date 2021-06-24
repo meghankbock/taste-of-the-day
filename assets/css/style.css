@@ -96,6 +96,11 @@ header nav ul li a:hover {
   padding: 0;
 }
 
+.form-label {
+    font-weight: 800;
+    text-align: center;
+}
+
 .form-input {
   border: 1px solid;
   border-radius: 15px;
@@ -337,15 +342,21 @@ display:none;
   text-align: left;
   list-style-position: inside;
   margin-bottom: 10px;
+  justify-content: space-evenly;
 }
 
 .single-recipe-container ul {
   margin: 10px;
 }
 
+.single-recipe-container img, ul, p {
+    margin-top: 10px;
+} 
+
 .recipe-title {
   font-weight: 800;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  width: 100%;
 }
 
 /* MEDIA QUERY FOR SMALLER DESKTOP SCREENS AND SMALLER */
@@ -381,6 +392,10 @@ display:none;
     text-align: center;
     justify-content: center;
   }
+}
+
+.content {
+    margin-top: 10px;
 }
 
 /* MEDIA QUERY FOR TABLETS AND SMALLER */

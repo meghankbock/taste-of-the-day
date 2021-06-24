@@ -199,7 +199,7 @@ $("#modal-save, #modal-save-2").click(function () {
     }
     else {
       day = day.toLowerCase();
-      mealType = mealType.toLowerCase();
+      mealType = mealType;
       recipeUrl = singleRecipe.url;
       recipeType = "food";
     }
