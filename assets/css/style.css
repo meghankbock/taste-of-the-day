@@ -359,6 +359,11 @@ footer p {
     text-align: center;
     justify-content: center;
   }
+  .drink-search-css {
+    flex: 0 100%;
+    text-align: center;
+    justify-content: center;
+  }
 }
 
 /* MEDIA QUERY FOR TABLETS AND SMALLER */
@@ -389,6 +394,11 @@ footer p {
     text-align: center;
     justify-content: center;
   }
+  .drink-search-css {
+    flex: 0 100%;
+    text-align: center;
+    justify-content: center;
+  }
 }
 
 @media screen and (max-width: 575px) {
@@ -414,6 +424,11 @@ footer p {
     justify-content: center;
   }
   .list-group {
+    flex: 0 100%;
+    text-align: center;
+    justify-content: center;
+  }
+  .drink-search-css {
     flex: 0 100%;
     text-align: center;
     justify-content: center;
