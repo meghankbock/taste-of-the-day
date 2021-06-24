@@ -7,6 +7,12 @@ var searchCuisineTypeEl = document.querySelector("#search-cuisine-type");
 var searchResultsEl = document.querySelector("#search-results");
 var recipeSearchTerm = document.querySelector("#recipe-search-term");
 var recipeObj = {};
+var drinkFormEl = document.querySelector("#search-form-drink");
+var drinkTextInputEl = document.querySelector("#search-text-drink");
+var drinkTypeEl = document.querySelector("#search-drink-type");
+var drinkResultsEl = document.querySelector("#drink-results");
+var drinkSearchTerm = document.querySelector("#drink-search-term");
+var drinkObj = {};
 var dayArray = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
 
 $("#currentDay").text(currentDate);
@@ -28,7 +34,7 @@ var updateDayHighlight = function () {
   }
 }
 
-var formSubmitHandler = function (event) {
+var recipeSubmitHandler = function (event) {
   event.preventDefault();
 
   var searchText = searchTextInputEl.value.trim();
@@ -42,6 +48,21 @@ var formSubmitHandler = function (event) {
     searchTextInputEl.value = "";
     searchMealTypeEl.value = "";
     searchCuisineTypeEl.value = "";
+  }
+};
+
+var drinkSubmitHandler = function (event) {
+  event.preventDefault();
+
+  var drinkText = drinkTextInputEl.value.trim().toLowerCase();
+  var drinkType = drinkTypeEl.value.toLowerCase();
+
+  if (!drinkText && !drinkType) {
+    alert("Please enter at least one Search Criteria.");
+  } else {
+    getDrinks(drinkText, drinkType);
+    drinkTextInputEl.value = "";
+    drinkTypeEl.value = "";
   }
 };
 
@@ -83,6 +104,42 @@ var getRecipes = function (searchText, mealType, cuisineType) {
           console.log(data);
           console.log(data.hits[0].recipe.label);
           displayRecipes(data.hits, searchText, mealType, cuisineType);
+        });
+      } else {
+        // will need to replace with modal
+        alert("Error");
+      }
+    })
+    .catch(function (error) {
+      // will need to replace with modal
+      alert("unable to connect");
+    });
+};
+
+var getDrinks = function (drinkText, drinkType) {
+  var apiKey = "1";
+  var apiUrl =
+    "www.thecocktaildb.com/api/json/v1/1/search.php?"
+
+  if (drinkText && drinkType) {
+    apiUrl =
+      apiUrl +
+      "s=" +
+      drinkText +
+      "&i=" +
+      drinkType;
+  } else if (drinkText && !drinkType) {
+    apiUrl = apiUrl + "s=" + drinkText;
+  } else if (!drinkText && drinkType) {
+    apiUrl = apiUrl + "i=" + drinkType;
+  }
+
+  fetch(apiUrl)
+    .then(function (response) {
+      if (response.ok) {
+        response.json().then(function (data) {
+          console.log(data);
+          //displayRecipes(data.hits, searchText, mealType, cuisineType);
         });
       } else {
         // will need to replace with modal
@@ -290,4 +347,6 @@ setInterval(function () {
 
 loadRecipeLocalStorage();
 
-searchFormEl.addEventListener("submit", formSubmitHandler);
+searchFormEl.addEventListener("submit", recipeSubmitHandler);
+
+drinkFormEl.addEventListener("submit", drinkSubmitHandler);

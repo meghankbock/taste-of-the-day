@@ -120,6 +120,51 @@
       </section>
     </section>
 
+    <section class="search-css">
+      <!-- Search Drink container -->
+      <section id="drink-container">
+        <!-- form container -->
+        <form id="search-form-drink">
+          <h3 class="subtitle">Search Recipes:</h3>
+          <div class="form-group">
+          <label class="form-label" for="name">Keyword:</label>
+          <input
+            class="form-input"
+            type="text"
+            name="name"
+            id="search-text-drink"
+          />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Choose Alcohol Type:</label>
+          <select class="form-input" id="search-drink-type" name="drinkType">
+            <option value="" disabled selected>
+              -- Please choose an option--
+            </option>
+            <option value="Tequila">Tequila</option>
+            <option value="Vodka">Vodka</option>
+            <option value="Whiskey">Whiskey</option>
+            <option value="Gin">Gin</option>
+            <option value="Rum">Rum</option>
+            <option value="Non-Alcoholic">Non-Alcoholic</option>
+          </select>
+        </div>
+          <button type="submit" id="search-submit-drink" class="button">
+            Search Drink
+          </button>
+        </form>
+      </section>
+
+      <!-- Search Result Recipes -->
+      <section id="drink-results-container">
+        <h3 class="subtitle">
+          Showing Recipes for:<span id="drink-search-term"></span>
+        </h3>
+        <div id="drink-results"></div>
+      </section>
+    </section>
+  </section>
+
     <!-- Weekly Calendar -->
     <section class="calendar-group">
       <!-- Current Date Displayed-->
