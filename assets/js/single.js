@@ -55,8 +55,8 @@ var getRecipe = function (recipeId) {
       if (response.ok) {
         response.json().then(function (data) {
           console.log(data);
-          singleRecipe = data.drinks;
-          displayRecipe(data.drinks);
+          singleRecipe = data.drinks[0];
+          displayRecipe(data.drinks[0]);
 
           if (response.headers.get("Link")) {
             displayWarning(recipeId);
@@ -110,13 +110,15 @@ var displayRecipe = function (recipe) {
   var queryString = document.location.search;
   var imageUrl="";
   var ingredientsArr=[];
-  var Instructions="";
+  var instructions="";
   if (
     queryString.includes("drinkId")
   ) {
     recipeName = recipe.strDrink;
+    console.log(recipeName);
     imageUrl= recipe.strDrinkThumb;
-    Instructions= recipe.strInstructions;
+    instructions= recipe.strInstructions;
+    console.log(instructions);
     for (
       var i= 0; i < 15; i++
     ) {
@@ -125,9 +127,11 @@ var displayRecipe = function (recipe) {
       if (
         ingredient
       ) {
+        console.log(ingredient);
         ingredientsArr.push(ingredient);
       }
     }
+    console.log(ingredientsArr);
   }
   else if (
     queryString.includes("recipeId")
@@ -151,7 +155,7 @@ var displayRecipe = function (recipe) {
 
   for (var i = 0; i < ingredientsArr.length; i++) {
     var ingredientsItem = document.createElement("li");
-    ingredientsItem.textContent = ingredientsArr[i].text;
+    ingredientsItem.textContent = ingredientsArr[i];
     ingredientsList.appendChild(ingredientsItem);
   }
 
