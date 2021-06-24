@@ -130,7 +130,6 @@ var getDrinks = function (drinkText) {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          console.log(data);
           displayDrinks(data.drinks, drinkText);
         });
       } else {
