@@ -1,103 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@800&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=en" />
-    <title>Taste of the Day</title>
-  </head>
-  <body>
-    <!-- Header and Navigation -->
-    <section class="totd-section">
-      <header>
-        <h1 id="totd-js" class="totd">Taste of the Day</h1>
-        <section class="nav-section">
-          <nav>
-            <ul id="nav-js" class="nav-css">
-              <li><a href="">Recipes</a></li>
-              <li><a href="">Calendar</a></li>
-            </ul>
-          </nav>
-      </header>
-    </section>
 
-    <section id="description-container">
-      <h3 id="currentDay"></h3>
-    </section>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=en" />
+  <title>Taste of the Day</title>
+</head>
 
-    <!-- Search result container -->
-    <section id="search-results-container">
-      <h2>Showing Results for:<section>
-      <div id="search-results"></div>
-    </section>
+<body>
+  <!-- Header and Navigation -->
+  <section class="totd-section">
+    <header>
+      <h1 id="totd-js" class="totd">Taste of the Day</h1>
+      <section class="nav-section">
+        <nav>
+          <ul id="nav-js" class="nav-css">
+            <li><a href="">Recipes</a></li>
+            <li><a href="">Calendar</a></li>
+          </ul>
+        </nav>
+    </header>
+  </section>
 
-  <!-- Single Recipe Container -->
-    <section id="single-recipe-container">
-    <div id="single-recipe"></div>
-    <div class="ml-md-auto w-100 w-md-auto">
-      <button id="save-recipe-button" data-toggle="modal"
-        data-target="#task-form-modal"><span class="oi oi-plus mr-2"></span>Save to Calendar</button>
-    </div>
-    </section>
-      
-    <!-- modal form-->
-    <section id="modal-form">
-      <div>
-        <form>
-            <label>Day of the Week</label>
-          <select id="day-input">
-            <option value="" disabled selected>
-                -- Please choose an option --
-            </option>
-            <option value="Sunday">Sunday</option>
-            <option value="Monday">Monday</option>
-            <option value="Tuesday">Tuesday</option>
-            <option value="Wednesday">Wednesday</option>
-            <option value="Thursday">Thursday</option>
-            <option value="Friday">Friday</option>
-            <option value="Saturday">Saturday</option>
-          </select>  
-        </form> 
+  <section id="description-container">
+    <h3 id="currentDay"></h3>
+  </section>
+
+  <!-- Search result container -->
+  <section id="search-results-container">
+    <h2>Showing Results for:<section>
+        <div id="search-results"></div>
+      </section>
+
+      <!-- Single Recipe Container -->
+      <section class="single-recipe-container" id="single-recipe-container">
+        <div class="recipe-title" id="single-recipe"></div>
+      </section>
+      <div class="button-container">
+        <div>
+          <button id="open">Save to Calender</button>
+        </div>
       </div>
 
-      <div>
-        <form> 
-          <label>Meal Type</label>
-          <select id="meal-input">
-            <option value="" disabled selected>
-              -- Please choose an option -- 
-            </option>
-            <option value="Breakfast">Breakfast</option>
-            <option value="Lunch">Lunch</option>
-            <option value="Dinner">Dinner</option>
-            <option value="Snack">Snack</option>
-            <option value="N/A">N/A</option>
-          </select>
-        </form>
+      <!-- modal form-->
+      <div class="modal" id="b">
+        <div class="content">
+          <form>
+            <div class="form-group">
+              <label>Day of the Week</label>
+              <select id="day-input">
+                <option value="" disabled selected>
+                  -- Please choose an option --
+                </option>
+                <option value="Sunday">Sunday</option>
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Meal Type</label>
+              <select id="meal-input">
+                <option value="" disabled selected>
+                  -- Please choose an option --
+                </option>
+                <option value="Breakfast">Breakfast</option>
+                <option value="Lunch">Lunch</option>
+                <option value="Dinner">Dinner</option>
+                <option value="Snack">Snack</option>
+                <option value="N/A">N/A</option>
+              </select>
+            </div>
+          </form>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-close" id="modal-close" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-save" id="modal-save">Save changes</button>
+        </div>
+      </div>
+      </div>
       </div>
 
-      <div>
-        <button id="modal-close-button">Close</button>
-      </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+      <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+      <script src="./assets/js/single.js"></script>
+</body>
 
-      <div>
-        <button id="modal-save-button">Save</button>
-      </div>
-
-    </section>
-
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="./assets/js/single.js"></script>
-  </body>
 </html>
