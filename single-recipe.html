@@ -28,28 +28,28 @@
     </header>
   </section>
 
-  <section id="description-container">
-    <h3 id="currentDay"></h3>
-  </section>
+  <div class="current-date">
+    <h2>Today's Date: <span id="currentDay"></span></h2>
+  </div>
 
   <!-- Search result container -->
-  <section id="search-results-container">
-    <h2>Showing Results for:<section>
+  <section id="single-result-container">
+    <section>
         <div id="search-results"></div>
       </section>
 
       <!-- Single Recipe Container -->
       <section class="single-recipe-container" id="single-recipe-container">
-        <div class="recipe-title" id="single-recipe"></div>
+        <h2 class="recipe-title text-align-center" id="single-recipe"></h2>
       </section>
       <div class="button-container">
         <div>
-          <button id="open">Save to Calender</button>
+          <button id="open" class="button">Save to Calender</button>
         </div>
       </div>
 
-      <!-- modal form-->
-      <div class="modal" id="b">
+      <!-- modal form for food recipe-->
+      <div class="modal" id="food-modal">
         <div class="content">
           <form>
             <div class="form-group">
@@ -68,7 +68,7 @@
               </select>
             </div>
             <div class="form-group">
-              <label>Meal Type</label>
+              <label class="meal-label">Meal Type</label>
               <select id="meal-input">
                 <option value="" disabled selected>
                   -- Please choose an option --
@@ -84,8 +84,38 @@
           
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-close" id="modal-close" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-save" id="modal-save">Save changes</button>
+          <button type="button" class="btn btn-save button" id="modal-save">Save changes</button>
+          <button type="button" class="btn btn-close button" id="modal-close" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      </div>
+      </div>
+
+      <!-- modal form for drink recipe-->
+      <div class="modal" id="drink-modal">
+        <div class="content">
+          <form>
+            <div class="form-group">
+              <label>Day of the Week</label>
+              <select id="day-input-2">
+                <option value="" disabled selected>
+                  -- Please choose an option --
+                </option>
+                <option value="Sunday">Sunday</option>
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+              </select>
+            </div>
+          </form>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-save button" id="modal-save-2">Save changes</button>
+          <button type="button" class="btn btn-close button" id="modal-close-2" data-dismiss="modal">Close</button>
         </div>
       </div>
       </div>
