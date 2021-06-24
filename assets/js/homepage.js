@@ -9,7 +9,6 @@ var recipeSearchTerm = document.querySelector("#recipe-search-term");
 var recipeObj = {};
 var drinkFormEl = document.querySelector("#search-form-drink");
 var drinkTextInputEl = document.querySelector("#search-text-drink");
-var drinkTypeEl = document.querySelector("#search-drink-type");
 var drinkResultsEl = document.querySelector("#drink-results");
 var drinkSearchTerm = document.querySelector("#drink-search-term");
 var drinkObj = {};
@@ -55,14 +54,12 @@ var drinkSubmitHandler = function (event) {
   event.preventDefault();
 
   var drinkText = drinkTextInputEl.value.trim().toLowerCase();
-  var drinkType = drinkTypeEl.value.toLowerCase();
 
-  if (!drinkText && !drinkType) {
+  if (!drinkText) {
     alert("Please enter at least one Search Criteria.");
   } else {
-    getDrinks(drinkText, drinkType);
+    getDrinks(drinkText);
     drinkTextInputEl.value = "";
-    drinkTypeEl.value = "";
   }
 };
 
@@ -116,22 +113,19 @@ var getRecipes = function (searchText, mealType, cuisineType) {
     });
 };
 
-var getDrinks = function (drinkText, drinkType) {
+var getDrinks = function (drinkText) {
   var apiKey = "1";
   var apiUrl =
     "https://www.thecocktaildb.com/api/json/v1/1/search.php?"
 
-  if (drinkText && drinkType) {
+  if (drinkText) {
     apiUrl =
       apiUrl +
       "s=" +
-      drinkText +
-      "&i=" +
-      drinkType;
-  } else if (drinkText && !drinkType) {
-    apiUrl = apiUrl + "s=" + drinkText;
-  } else if (!drinkText && drinkType) {
-    apiUrl = apiUrl + "i=" + drinkType;
+      drinkText
+  }
+  else { 
+    return; 
   }
 
   fetch(apiUrl)
@@ -185,7 +179,7 @@ var displayRecipes = function (recipes, searchText, mealType, cuisineType) {
     recipeEl.classList = "search-list-item";
     recipeEl.setAttribute("href", "./single-recipe.html?recipeId=" + recipeId + "&recipeName=" + recipeName);
 
-    var titleEl = document.createElement("span");
+    var titleEl = document.createElement("h4");
     titleEl.textContent = recipeName;
 
     recipeEl.appendChild(titleEl);
@@ -195,7 +189,6 @@ var displayRecipes = function (recipes, searchText, mealType, cuisineType) {
 
 var displayDrinks = function (drinks, drinkText) {
   if (drinks.length === 0) {
-    console.log("no drinks found");
     drinkResultsEl.textContent = "No drinks found.";
     return;
   }
@@ -214,7 +207,7 @@ var displayDrinks = function (drinks, drinkText) {
     drinkEl.classList = "search-list-item";
     drinkEl.setAttribute("href", "./single-recipe.html?drinkId=" + drinkId + "&drinkName=" + drinkName);
 
-    var titleEl = document.createElement("span");
+    var titleEl = document.createElement("h4");
     titleEl.textContent = drinkName;
 
     drinkEl.appendChild(titleEl);
@@ -222,15 +215,24 @@ var displayDrinks = function (drinks, drinkText) {
   }
 };
 
-var renderRecipe = function (recipeName, recipeMealType, recipeUrl, calendarDay) {
-  var dayLi = $("<li>").addClass("list-group-item");;
-  var recipeSpan = $("<span>").text(recipeName);
+var renderRecipe = function (recipeName, recipeType, recipeMealType, recipeUrl, calendarDay) {
+  var dayLi = $("<li>").addClass("list-group-item");
+  var recipeSpan = $("<h4>").text(recipeName);
   recipeSpan.addClass("recipe-name");
-  var recipeP = $("<p>").text(recipeMealType);
-  var recipeA = $("<a>").text("Instructions");
-  recipeA.attr("href", recipeUrl);
+  dayLi.append(recipeSpan);
 
-  dayLi.append(recipeSpan, recipeP, recipeA);
+  if(recipeType == "food") {
+    var recipeP = $("<p>").text(recipeMealType);
+    var recipeA = $("<a>").text("Instructions");
+    recipeA.attr("href", recipeUrl);
+  
+    dayLi.append(recipeP, recipeA);
+    dayLi.addClass("list-group-item-food");
+  }
+  else {
+    dayLi.addClass("list-group-item-drink");
+  }
+  
 
   $("#list-" + calendarDay).append(dayLi);
 };
@@ -254,7 +256,7 @@ var loadRecipeLocalStorage = function () {
   // loop over object properties and add event text to page
   $.each(recipeObj, function (list, arr) {
     arr.forEach(function (recipe) {
-      renderRecipe(recipe.name, recipe.mealType, recipe.url, list);
+      renderRecipe(recipe.name, recipe.recipeType, recipe.mealType, recipe.url, list);
     });
   });
 };
@@ -288,7 +290,7 @@ $(".list-group").on("blur", "select", function () {
   var index = $(this).closest(".list-group-item").index();
 
   // update task in array and re-save to localstorage
-  recipeObj[day][index].text = text;
+  recipeObj[day][index].mealType = text;
   saveRecipeLocalStorage();
 
   // recreate p element
@@ -312,10 +314,10 @@ $(".day-of-week .list-group").sortable({
     $(".bottom-trash").removeClass("bottom-trash-drag");
   },
   over: function (event) {
-    $(event.target).addClass("dropover-active");
+    $(event.target).closest(".day-of-week").addClass("dropover-active");
   },
   out: function (event) {
-    $(event.target).removeClass("dropover-active");
+    $(event.target).closest(".day-of-week").removeClass("dropover-active");
   },
   update: function () {
     // array to store the task data in
@@ -325,15 +327,23 @@ $(".day-of-week .list-group").sortable({
     $(this)
       .children()
       .each(function () {
-        var meal = $(this).find("p").text().trim();
+        var name = $(this).find("h4").text().trim();
+        var recipeType = "";
+        var meal = "";
+        var url = "";
 
-        var name = $(this).find("span").text().trim();
-
-        var url = $(this).find("a").text().trim();
+        if($(this).recipeType == "food") {
+          meal = $(this).find("p").text().trim();
+          url = $(this).find("a").text().trim();
+          recipeType = "food";
+        } else {
+          recipeType = "drink";
+        }
 
         // add task data to the temp array as an object
         tempArr.push({
           name: name,
+          recipeType: recipeType,
           mealType: meal,
           url: url,
         });
