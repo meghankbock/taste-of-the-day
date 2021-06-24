@@ -319,3 +319,31 @@ footer p {
       font-weight: 600;
       margin-bottom: 5px;
   }
+
+  @media screen and (max-width: 575px) {
+    .totd {
+        margin: 0;
+        text-align: center;
+    }
+    header nav ul li a {
+    font-size: 20px;  
+    }
+
+    body {
+        background-size: 100%;
+    }
+    .description{
+        width: 100%;
+        margin: 0;
+    }
+    .search-css {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+    .list-group {
+        flex: 0 100%;
+        text-align: center;
+        justify-content: center;
+    }
+}
