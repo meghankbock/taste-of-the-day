@@ -11,6 +11,15 @@ var recipeObj = {
   friday: [],
   saturday: [],
 };
+var drinkObj = {
+  sunday: [],
+  monday: [],
+  tuesday: [],
+  wednesday: [],
+  thursday: [],
+  friday: [],
+  saturday: [],
+};
 console.log(recipeObj);
 var singleRecipe = {};
 
@@ -35,67 +44,126 @@ var getRecipeName = function () {
 }
 
 var getRecipe = function (recipeId) {
-  var apiId = "91e2da9b";
-  var apiKey = "d56ab70c91a98e462f1a95f47179d8a1";
+  var queryString = document.location.search;
+  if (
+    queryString.includes("drinkId")
+  ) {
+    var apiKey = "1";
+    var apiUrl = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + recipeId;
+    console.log(apiUrl)
+    fetch(apiUrl).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (data) {
+          console.log(data);
+          singleRecipe = data.drinks;
+          displayRecipe(data.drinks);
 
-  var apiUrl =
-    "https://api.edamam.com/api/recipes/v2/" + recipeId + "?app_id=" +
-    apiId +
-    "&app_key=" +
-    apiKey +
-    "&type=public";
+          if (response.headers.get("Link")) {
+            displayWarning(recipeId);
+          }
+        });
+      }
+      else {
+        console.log("get Recipe error");
+        //document.location.replace("./index.html");
+      }
+    });
+  }
+  else if (
+    queryString.includes("recipeId")
+  ) {
+    var apiId = "91e2da9b";
+    var apiKey = "d56ab70c91a98e462f1a95f47179d8a1";
 
-  console.log(apiUrl);
+    var apiUrl =
+      "https://api.edamam.com/api/recipes/v2/" + recipeId + "?app_id=" +
+      apiId +
+      "&app_key=" +
+      apiKey +
+      "&type=public";
 
-  fetch(apiUrl).then(function (response) {
-    if (response.ok) {
-      response.json().then(function (data) {
-        console.log(data);
-        singleRecipe = data.recipe;
-        displayRecipe(data.recipe);
+    console.log(apiUrl);
 
-        if (response.headers.get("Link")) {
-          displayWarning(recipeId);
-        }
-      });
-    }
-    else {
-      console.log("get Recipe error");
-      //document.location.replace("./index.html");
-    }
-  });
+    fetch(apiUrl).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (data) {
+          console.log(data);
+          singleRecipe = data.recipe;
+          displayRecipe(data.recipe);
+
+          if (response.headers.get("Link")) {
+            displayWarning(recipeId);
+          }
+        });
+      }
+      else {
+        console.log("get Recipe error");
+        //document.location.replace("./index.html");
+      }
+    });
+  }
 };
 
 var displayRecipe = function (recipe) {
-  var recipeName = recipe.label;
+  console.log("displayRecipe")
+  var recipeName = "";
+  var queryString = document.location.search;
+  var imageUrl="";
+  var ingredientsArr=[];
+  var Instructions="";
+  if (
+    queryString.includes("drinkId")
+  ) {
+    recipeName = recipe.strDrink;
+    imageUrl= recipe.strDrinkThumb;
+    Instructions= recipe.strInstructions;
+    for (
+      var i= 0; i < 15; i++
+    ) {
+      console.log("loop started")
+      var ingredient= recipe["strIngredient" + (i + 1)];
+      if (
+        ingredient
+      ) {
+        ingredientsArr.push(ingredient);
+      }
+    }
+  }
+  else if (
+    queryString.includes("recipeId")
+  ) {
+    recipeName = recipe.label;
+    imageUrl= recipe.image;
+    ingredientsArr= recipe.ingredients;
+  }
+  
   recipeNameEl.textContent = recipeName;
   if (recipe.length === 0) {
     alert("error");
   }
 
   var recipeImg = document.createElement("img");
-  recipeImg.setAttribute("src", recipe.image);
+  recipeImg.setAttribute("src", imageUrl);
   recipeContainerEl.appendChild(recipeImg);
 
   var ingredientsList = document.createElement("ul");
   ingredientsList.textContent = "Ingredients:";
 
-  console.log("ingredient length: " + recipe.ingredients.length);
-
-  for (var i = 0; i < recipe.ingredients.length; i++) {
+  for (var i = 0; i < ingredientsArr.length; i++) {
     var ingredientsItem = document.createElement("li");
-    ingredientsItem.textContent = recipe.ingredients[i].text;
+    ingredientsItem.textContent = ingredientsArr[i].text;
     ingredientsList.appendChild(ingredientsItem);
   }
 
   recipeContainerEl.appendChild(ingredientsList);
 
   var instructionsButton = document.createElement("a");
-  instructionsButton.setAttribute("href", recipe.url);
-  instructionsButton.setAttribute("target", "_blank");
+  //instructionsButton.setAttribute("href", recipe.url);
+  //instructionsButton.setAttribute("target", "_blank");
   instructionsButton.textContent = "Preparation Instructions";
 
   recipeContainerEl.appendChild(instructionsButton);
+  console.log("instructions")
 };
 
 var loadRecipeLocalStorage = function () {

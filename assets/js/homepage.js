@@ -28,7 +28,7 @@ var updateDayHighlight = function () {
     dayContainer.classList = "day-of-week";
     var dayHeader = dayContainer.children().first();
     dayHeader.removeClass("day-header-current");
-    if(currentDay.toUpperCase() == dayArray[i].toUpperCase()) {
+    if (currentDay.toUpperCase() == dayArray[i].toUpperCase()) {
       dayHeader.addClass("day-header-current");
     }
   }
@@ -119,7 +119,7 @@ var getRecipes = function (searchText, mealType, cuisineType) {
 var getDrinks = function (drinkText, drinkType) {
   var apiKey = "1";
   var apiUrl =
-    "www.thecocktaildb.com/api/json/v1/1/search.php?"
+    "https://www.thecocktaildb.com/api/json/v1/1/search.php?"
 
   if (drinkText && drinkType) {
     apiUrl =
@@ -139,7 +139,7 @@ var getDrinks = function (drinkText, drinkType) {
       if (response.ok) {
         response.json().then(function (data) {
           console.log(data);
-          //displayRecipes(data.hits, searchText, mealType, cuisineType);
+          displayDrinks(data.drinks, drinkText);
         });
       } else {
         // will need to replace with modal
@@ -190,6 +190,35 @@ var displayRecipes = function (recipes, searchText, mealType, cuisineType) {
 
     recipeEl.appendChild(titleEl);
     searchResultsEl.appendChild(recipeEl);
+  }
+};
+
+var displayDrinks = function (drinks, drinkText) {
+  if (drinks.length === 0) {
+    console.log("no drinks found");
+    drinkResultsEl.textContent = "No drinks found.";
+    return;
+  }
+
+  drinkResultsEl.textContent = "";
+
+  drinkSearchTerm.textContent = drinkText;
+  console.log(drinkSearchTerm);
+
+  for (var i = 0; i < drinks.length; i++) {
+    var drinkName = drinks[i].strDrink;
+    var drinkId = drinks[i].idDrink;
+    console.log(drinkId);
+
+    var drinkEl = document.createElement("a");
+    drinkEl.classList = "search-list-item";
+    drinkEl.setAttribute("href", "./single-recipe.html?drinkId=" + drinkId + "&drinkName=" + drinkName);
+
+    var titleEl = document.createElement("span");
+    titleEl.textContent = drinkName;
+
+    drinkEl.appendChild(titleEl);
+    drinkResultsEl.appendChild(drinkEl);
   }
 };
 
@@ -278,7 +307,7 @@ $(".day-of-week .list-group").sortable({
     $(this).addClass("dropover");
     $(".bottom-trash").addClass("bottom-trash-drag");
   },
-  deactivate: function(event, ui) {
+  deactivate: function (event, ui) {
     $(this).removeClass("dropover");
     $(".bottom-trash").removeClass("bottom-trash-drag");
   },
