@@ -1,237 +1,268 @@
 * {
-    margin: 0;
-    padding: 0 20px;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 body {
-    background-image: url(../images/background-photo.jpeg);
-    background-size: cover;
-    font-family: "Open Sans", sans-serif;
+  background-image: url(../images/background-photo.jpeg);
+  background-size: cover;
+  font-family: "Open Sans", sans-serif;
 }
 
 /*page title*/
 .totd {
-    font-size: 60px;
-    font-family: 'Cinzel', sans-serif;
-    text-align: center;
-    margin: 3rem;
+  font-size: 60px;
+  font-family: "Cinzel", sans-serif;
+  text-align: center;
+  margin: 3rem;
 }
 /*nav*/
 header nav ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    list-style: none;
-    margin-bottom: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  margin-bottom: 2rem;
 }
 
 header nav ul li a {
-    padding: 10px 10px;
-    font-size: 1.3vw;
-    color: #F94D00;
-    text-decoration: none;
-    font-family: 'Cinzel', sans-serif;
+  padding: 10px 10px;
+  font-size: 1.3vw;
+  color: #f94d00;
+  text-decoration: none;
+  font-family: "Cinzel", sans-serif;
 }
 
 header nav ul li a:hover {
-    color: black;
-    text-shadow: none;
+  color: black;
+  text-shadow: none;
 }
 
 .flex {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.description{
-    font-family: "Open Sans", sans-serif;
-    font-weight: 600;
-    font-size: 14px ;
-    padding: 10px 5px 20px;
-    border: 3px solid black;
-    margin: 30px 50px;
-    background-color: #FFFFFF;
-    margin-left: 25%;
-    margin-right: 25%;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+.description {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 5px 20px;
+  border: 3px solid black;
+  border-radius: 15px;
+  margin: 30px 50px;
+  background-color: #ffffff;
+  margin-left: 25%;
+  margin-right: 25%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 /*search container as whole*/
 
 .search-css {
-    font-family: "Open Sans", sans-serif;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    border: 3px solid black;
-    background-color: #FFFFFF;
-    padding: 0;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  font-family: "Open Sans", sans-serif;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  border: 3px solid black;
+  border-radius: 15px;
+  background-color: #ffffff;
+  padding: 20;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .list {
-    font-family: "Open Sans", sans-serif;
-    list-style: none; 
-    text-align: left;
-    padding: 0;
+  font-family: "Open Sans", sans-serif;
+  list-style: none;
+  text-align: left;
+  padding: 0;
 }
 
 .subtitle {
-    margin-bottom: .75rem;
+  margin-bottom: 0.75rem;
 }
 
 #recipe-search-term {
 }
 
 .form-group {
-    width: 100%;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.form-input {
+  border: 1px solid;
+  border-radius: 15px;
+  display: block;
+  padding: 7px 15px;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 15px;
 }
 
 .button {
-    width: 50%;
-    padding: 0;
-    margin: 3% 25% 2% 25%;
+  width: 50%;
+  background-color: #f94d00;
+  border-radius: 15px;
+  padding: 5px 5px;
+  margin: 3% 25% 2% 25%;
+  font-size: 16px;
+  font-weight: 800;
+  color: white;
 }
 
 #search-container {
-    font-family: "Open Sans", sans-serif;
-    padding: 10px 0;
-    background-color: #FFFFFF;
-    text-align: left;
+  font-family: "Open Sans", sans-serif;
+  padding: 10px 0;
+  background-color: #ffffff;
+  text-align: center;
+  font-weight: 800;
+  width: 100%;
 }
 
 #search-form {
-    padding: 0;
+  padding: 0;
 }
 
-#search-results-container{
-    font-family: "Open Sans", sans-serif;
-    padding: 10px;
-    background-color: #FFFFFF;
-    border-top: 3px solid black;
+#search-results-container {
+  font-family: "Open Sans", sans-serif;
+  padding: 10px;
+  background-color: #ffffff;
+  border-top: 3px solid black;
+  text-align: center;
 }
 
 #search-results {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 #recipe-search-term {
-    font-family: "Open Sans", sans-serif;
-    align-items: left;
+  font-family: "Open Sans", sans-serif;
+  align-items: left;
 }
 
 .search-list-item {
-    position: relative;
-    display: block;
-    padding: .5rem .5rem;
-    border: 1px solid rgba(0,0,0,.125);
-    width: 100%;
-    margin-top: .75rem;
-    margin-bottom: .75rem;
+  position: relative;
+  display: block;
+  padding: 0.5rem 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  width: 100%;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
 }
 
 /*calendar as whole*/
 .calendar-group {
-    margin: 50px 30px;
+  margin: 50px 30px;
 }
 
 .current-date {
-    padding: 10px 0;
-    font-family: 'Cinzel', sans-serif;
-    text-align: center;
+  padding: 10px 0;
+  font-family: "Cinzel", sans-serif;
+  text-align: center;
 }
 
 #calendar-container {
-    font-family: "Open Sans", serif;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    list-style: none; 
-    padding: 20px 20px;
-    border: 3px solid black;
-    background-color: #FFFFFF;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  font-family: "Open Sans", serif;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  padding: 20px 20px;
+  border: 3px solid black;
+  border-radius: 15px;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 /* calendar by day */
 .day-of-week {
-    border: 1px solid black;
-    padding: 0;
-    margin: auto;
-    min-width: 14%;
-    min-height: 22rem;
+  border: 3px solid black;
+  border-radius: 15px;
+  padding: 0;
+  margin: auto;
+  min-width: 14%;
+  min-height: 22rem;
 }
 
 .day-header {
-    background-color: #0C94FA;
-    color: #FFFFFF;
-    padding: .75rem 1.25rem;
+  background-color: #0c94fa;
+  border-radius: 12px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  color: #ffffff;
+  width: 100%;
+  padding: 0.75rem 1.25rem;
+  text-align: center;
 }
 
 .day-header-current {
-    background-color: #F94D00;
+  background-color: #f94d00;
+  text-align: center;
 }
 
 .list-group {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 ul.list-group {
-    min-width: 20rem;
-    min-height: 130px;
-    max-width: 21px;
-    text-align: left;
-    list-style: none;
+  min-width: 20rem;
+  min-height: 130px;
+  max-width: 21px;
+  text-align: left;
+  list-style: none;
 }
 
 .list-group-item {
-    position: relative;
-    display: block;
-    padding: .5rem .5rem;
-    border: 1px solid rgba(0,0,0,.125);
-    width: 100%;
-    margin-top: .75rem;
-    margin-bottom: .75rem;
+  position: relative;
+  display: block;
+  padding: 0.5rem 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  width: 100%;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
 }
 
 .recipe-name {
-    font-weight: 700;
+  font-weight: 700;
 }
 
 /*trash*/
-#recipe-trash{
-    margin: 0 auto 50px;
+#recipe-trash {
+  margin: 0 auto 50px;
+  text-align: center;
 }
 
 /*footer*/
 footer {
-    width: 100%;
-    padding: 20px 15px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+  width: 100%;
+  padding: 20px 15px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 footer p {
-    font-size: 15px;
-    margin: 0;
-    font-family: "Open Sans"; ;
+  font-size: 15px;
+  margin: 0;
+  font-family: "Open Sans";
 }
 
 /*ui*/
 .dropover {
-    background-color: rgba(0,0,0,0.3);
-  }
-  
-  .dropover-active {
-    background-color: rgba(0,0,0,0.9);
-  }
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.dropover-active {
+  background-color: rgba(0, 0, 0, 0.9);
+}
