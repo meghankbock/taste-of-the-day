@@ -48,7 +48,7 @@ header nav ul li a:hover {
 .description {
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 18px;
   padding: 10px 5px 20px;
   border: 3px solid black;
   border-radius: 15px;
@@ -57,6 +57,7 @@ header nav ul li a:hover {
   margin-left: 25%;
   margin-right: 25%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  background-color: rgba(242, 246, 248, 0.2);
 }
 
 /*search container as whole*/
@@ -71,6 +72,7 @@ header nav ul li a:hover {
   background-color: #ffffff;
   padding: 20;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  background-color: rgba(242, 246, 248, 0.2);
 }
 
 .list {
@@ -121,6 +123,7 @@ header nav ul li a:hover {
   text-align: center;
   font-weight: 800;
   width: 100%;
+  background-color: rgba(242, 246, 248, 0.2);
 }
 
 #search-form {
@@ -133,6 +136,7 @@ header nav ul li a:hover {
   background-color: #ffffff;
   border-top: 3px solid black;
   text-align: center;
+  background-color: rgba(242, 246, 248, 0.2);
 }
 
 #search-results {
@@ -168,6 +172,11 @@ header nav ul li a:hover {
   text-align: center;
 }
 
+.current-date h2 {
+  border-bottom: 3px solid;
+  display: inline-block;
+}
+
 #calendar-container {
   font-family: "Open Sans", serif;
   display: flex;
@@ -176,10 +185,9 @@ header nav ul li a:hover {
   align-items: center;
   list-style: none;
   padding: 20px 20px;
-  border: 3px solid black;
   border-radius: 15px;
   background-color: #ffffff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  background-color: rgba(242, 246, 248, 0);
 }
 
 /* calendar by day */
@@ -190,6 +198,7 @@ header nav ul li a:hover {
   margin: auto;
   min-width: 14%;
   min-height: 22rem;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .day-header {
@@ -221,6 +230,8 @@ ul.list-group {
   max-width: 21px;
   text-align: left;
   list-style: none;
+  font-weight: 900;
+  text-align: center;
 }
 
 .list-group-item {
@@ -260,62 +271,62 @@ footer p {
 
 /*ui*/
 .dropover {
-    background-color: rgba(0,0,0,0.3);
-  }
-  
-  .dropover-active {
-    background-color: rgba(0,0,0,0.9);
-  }
+  background-color: rgba(0, 0, 0, 0.3);
+}
 
-  .container{
-    display: none;
-    width: 100%;
-    height: 100vh;
-    position: fixed;
-    opacity: 0.9;
-    background: #222;
-    z-index: 40000;
-    top:0;
-    left: 0;
-    overflow: hidden;
-  
-    animation-name: fadeIn_Container;
-    animation-duration: 1s;
-  }
-  
-  .modal{
-    display:none;
-    top: 0;
-    min-width: 250px;
-    width: 80%;
-    height: 400px;
-    margin: 0 auto;
-    position: fixed;
-    z-index: 40001;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px #000;
-    margin-top: 30px;
-    margin-left: 10%;
-  
-    animation-name: fadeIn_Modal;
-    animation-duration: 0.8s;
-  }
+.dropover-active {
+  background-color: rgba(0, 0, 0, 0.9);
+}
 
-  #single-recipe-container{
-      font-size: 16px;
-      font-weight: 300;
-      padding: 0;
-      text-align: left;
-      list-style-position: inside;
-      margin-bottom: 10px;
-  }
+.container {
+  display: none;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  opacity: 0.9;
+  background: #222;
+  z-index: 40000;
+  top: 0;
+  left: 0;
+  overflow: hidden;
 
-  .single-recipe-container ul{
-    margin: 10px;
-  }  
+  animation-name: fadeIn_Container;
+  animation-duration: 1s;
+}
 
-  .recipe-title{
-      font-weight: 600;
-      margin-bottom: 5px;
-  }
+.modal {
+  display: none;
+  top: 0;
+  min-width: 250px;
+  width: 80%;
+  height: 400px;
+  margin: 0 auto;
+  position: fixed;
+  z-index: 40001;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px #000;
+  margin-top: 30px;
+  margin-left: 10%;
+
+  animation-name: fadeIn_Modal;
+  animation-duration: 0.8s;
+}
+
+#single-recipe-container {
+  font-size: 16px;
+  font-weight: 300;
+  padding: 0;
+  text-align: left;
+  list-style-position: inside;
+  margin-bottom: 10px;
+}
+
+.single-recipe-container ul {
+  margin: 10px;
+}
+
+.recipe-title {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
