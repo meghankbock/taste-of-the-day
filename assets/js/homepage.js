@@ -130,6 +130,7 @@ var getDrinks = function (drinkText) {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
+          console.log(data);
           displayDrinks(data.drinks, drinkText);
         });
       } else {
@@ -185,7 +186,7 @@ var displayRecipes = function (recipes, searchText, mealType, cuisineType) {
 };
 
 var displayDrinks = function (drinks, drinkText) {
-  if (drinks.length === 0) {
+  if (!drinks) {
     drinkResultsEl.textContent = "No drinks found.";
     return;
   }
