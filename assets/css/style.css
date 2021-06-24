@@ -84,7 +84,6 @@ header nav ul li a:hover {
   margin-bottom: 0.75rem;
 }
 
-
 .form-group {
   font-size: 16px;
   width: 100%;
@@ -110,6 +109,20 @@ header nav ul li a:hover {
   font-size: 16px;
   font-weight: 800;
   color: white;
+}
+
+.drink-search-css {
+  font-family: "Open Sans", sans-serif;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  border: 3px solid black;
+  border-radius: 15px;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  font-weight: 900;
+  width: 30%;
 }
 
 #search-container {
@@ -258,94 +271,94 @@ footer p {
 
 /*ui*/
 .dropover {
-    background-color: rgba(0,0,0,0.3);
-  }
-  
-  .dropover-active {
-    background-color: rgba(0,0,0,0.9);
-  }
+  background-color: rgba(0, 0, 0, 0.3);
+}
 
-  .container{
-    display: none;
-    width: 100%;
-    height: 100vh;
-    position: fixed;
-    opacity: 0.9;
-    background: #222;
-    z-index: 40000;
-    top:0;
-    left: 0;
-    overflow: hidden;
-  
-    animation-name: fadeIn_Container;
-    animation-duration: 1s;
-  }
-  
-  .modal{
-    display:none;
-    top: 0;
-    min-width: 250px;
-    width: 80%;
-    height: 400px;
-    margin: 0 auto;
-    position: fixed;
-    z-index: 40001;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px #000;
-    margin-top: 30px;
-    margin-left: 10%;
-  
-    animation-name: fadeIn_Modal;
-    animation-duration: 0.8s;
-  }
+.dropover-active {
+  background-color: rgba(0, 0, 0, 0.9);
+}
 
-  #single-recipe-container{
-      font-size: 16px;
-      font-weight: 300;
-      padding: 0;
-      text-align: left;
-      list-style-position: inside;
-      margin-bottom: 10px;
-  }
+.container {
+  display: none;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  opacity: 0.9;
+  background: #222;
+  z-index: 40000;
+  top: 0;
+  left: 0;
+  overflow: hidden;
 
-  .single-recipe-container ul{
-    margin: 10px;
-  }  
+  animation-name: fadeIn_Container;
+  animation-duration: 1s;
+}
 
-  .recipe-title{
-      font-weight: 600;
-      margin-bottom: 5px;
-  }
+.modal {
+  display: none;
+  top: 0;
+  min-width: 250px;
+  width: 80%;
+  height: 400px;
+  margin: 0 auto;
+  position: fixed;
+  z-index: 40001;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px #000;
+  margin-top: 30px;
+  margin-left: 10%;
 
-  /* MEDIA QUERY FOR SMALLER DESKTOP SCREENS AND SMALLER */
+  animation-name: fadeIn_Modal;
+  animation-duration: 0.8s;
+}
+
+#single-recipe-container {
+  font-size: 16px;
+  font-weight: 300;
+  padding: 0;
+  text-align: left;
+  list-style-position: inside;
+  margin-bottom: 10px;
+}
+
+.single-recipe-container ul {
+  margin: 10px;
+}
+
+.recipe-title {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+/* MEDIA QUERY FOR SMALLER DESKTOP SCREENS AND SMALLER */
 @media screen and (max-width: 980px) {
   .totd {
     margin: 0;
     text-align: center;
     font-size: 60px;
-}
-header nav ul li a {
-font-size: 20px;  
-}
+  }
+  header nav ul li a {
+    font-size: 20px;
+  }
 
-body {
+  body {
     background-size: 100%;
-}
-.description{
+  }
+  .description {
     width: 100%;
     margin: 0;
-}
-.search-css {
+  }
+  .search-css {
     width: 100%;
     text-align: center;
     justify-content: center;
-}
-.list-group {
+  }
+  .list-group {
     flex: 0 100%;
     text-align: center;
     justify-content: center;
-}
+  }
 }
 
 /* MEDIA QUERY FOR TABLETS AND SMALLER */
@@ -354,55 +367,55 @@ body {
     margin: 0;
     text-align: center;
     font-size: 60px;
-}
-header nav ul li a {
-font-size: 20px;  
-}
+  }
+  header nav ul li a {
+    font-size: 20px;
+  }
 
-body {
+  body {
     background-size: 100%;
-}
-.description{
+  }
+  .description {
     width: 100%;
     margin: 0;
-}
-.search-css {
+  }
+  .search-css {
     width: 100%;
     text-align: center;
     justify-content: center;
-}
-.list-group {
+  }
+  .list-group {
     flex: 0 100%;
     text-align: center;
     justify-content: center;
-}
+  }
 }
 
-  @media screen and (max-width: 575px) {
-    .totd {
-        margin: 0;
-        text-align: center;
-        font-size: 60px;
-    }
-    header nav ul li a {
-    font-size: 20px;  
-    }
+@media screen and (max-width: 575px) {
+  .totd {
+    margin: 0;
+    text-align: center;
+    font-size: 60px;
+  }
+  header nav ul li a {
+    font-size: 20px;
+  }
 
-    body {
-        background-size: 100%;
-    }
-    .description{
-        width: 100%;
-        margin: 0;
-    }
-    .search-css {
-        width: 100%;
-        text-align: center;
-        justify-content: center;
-    }
-    .list-group {
-        flex: 0 100%;
-        text-align: center;
-        justify-content: center;
-    }
+  body {
+    background-size: 100%;
+  }
+  .description {
+    width: 100%;
+    margin: 0;
+  }
+  .search-css {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+  .list-group {
+    flex: 0 100%;
+    text-align: center;
+    justify-content: center;
+  }
 }
