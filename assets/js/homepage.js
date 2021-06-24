@@ -98,8 +98,6 @@ var getRecipes = function (searchText, mealType, cuisineType) {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          console.log(data);
-          console.log(data.hits[0].recipe.label);
           displayRecipes(data.hits, searchText, mealType, cuisineType);
         });
       } else {
@@ -332,12 +330,14 @@ $(".day-of-week .list-group").sortable({
         var meal = "";
         var url = "";
 
-        if($(this).recipeType == "food") {
+        if($(this)[0].classList[1] == "list-group-item-food") {
+          console.log($(this));
           meal = $(this).find("p").text().trim();
           url = $(this).find("a").text().trim();
           recipeType = "food";
         } else {
           recipeType = "drink";
+          console.log($(this));
         }
 
         // add task data to the temp array as an object

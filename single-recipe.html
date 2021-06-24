@@ -34,12 +34,12 @@
 
   <!-- Search result container -->
   <section id="single-result-container">
-    <section>
+      <section>
         <div id="search-results"></div>
       </section>
 
       <!-- Single Recipe Container -->
-      <section class="single-recipe-container" id="single-recipe-container">
+      <section class="single-recipe-container flex" id="single-recipe-container">
         <h2 class="recipe-title text-align-center" id="single-recipe"></h2>
       </section>
       <div class="button-container">
@@ -47,14 +47,16 @@
           <button id="open" class="button">Save to Calender</button>
         </div>
       </div>
+      </section>
+  </section>
 
       <!-- modal form for food recipe-->
       <div class="modal" id="food-modal">
         <div class="content">
           <form>
             <div class="form-group">
-              <label>Day of the Week</label>
-              <select id="day-input">
+              <label class="form-label">Day of the Week</label>
+              <select id="day-input" class="form-input">
                 <option value="" disabled selected>
                   -- Please choose an option --
                 </option>
@@ -68,8 +70,8 @@
               </select>
             </div>
             <div class="form-group">
-              <label class="meal-label">Meal Type</label>
-              <select id="meal-input">
+              <label class="form-label">Meal Type</label>
+              <select id="meal-input" class="form-input">
                 <option value="" disabled selected>
                   -- Please choose an option --
                 </option>
@@ -96,8 +98,8 @@
         <div class="content">
           <form>
             <div class="form-group">
-              <label>Day of the Week</label>
-              <select id="day-input-2">
+              <label class="form-label">Day of the Week</label>
+              <select id="day-input-2" class="form-input">
                 <option value="" disabled selected>
                   -- Please choose an option --
                 </option>
