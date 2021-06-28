@@ -20,7 +20,6 @@ $("#currentDay").text(currentDate);
 var updateDayHighlight = function () {
   var currentDay = "";
   currentDay = moment().format('dddd');
-  console.log("current day: " + currentDay.toUpperCase());
 
   for (var i = 0; i < dayArray.length; i++) {
     var dayContainer = $("#" + dayArray[i] + "-container");
@@ -41,8 +40,10 @@ var recipeSubmitHandler = function (event) {
   var cuisineType = searchCuisineTypeEl.value;
 
   if (!searchText && !mealType && !cuisineType) {
-    alert("Please enter at least one Search Criteria.");
+    searchResultsEl.textContent = "";
+    searchResultsEl.textContent = "Please enter at least one search criteria.";
   } else {
+    searchResultsEl.textContent = "";
     getRecipes(searchText, mealType, cuisineType);
     searchTextInputEl.value = "";
     searchMealTypeEl.value = "";
@@ -56,8 +57,10 @@ var drinkSubmitHandler = function (event) {
   var drinkText = drinkTextInputEl.value.trim().toLowerCase();
 
   if (!drinkText) {
-    alert("Please enter at least one Search Criteria.");
+    drinkResultsEl.textContent = "";
+    drinkResultsEl.textContent = "Please enter a search criteria.";
   } else {
+    drinkResultsEl.textContent = "";
     getDrinks(drinkText);
     drinkTextInputEl.value = "";
   }
@@ -101,13 +104,11 @@ var getRecipes = function (searchText, mealType, cuisineType) {
           displayRecipes(data.hits, searchText, mealType, cuisineType);
         });
       } else {
-        // will need to replace with modal
-        alert("Error");
+        searchResultsEl.textContent = "There was an error processing your request.";
       }
     })
     .catch(function (error) {
-      // will need to replace with modal
-      alert("unable to connect");
+      searchResultsEl.textContent = "Unable to connect to the server.";
     });
 };
 
@@ -130,23 +131,19 @@ var getDrinks = function (drinkText) {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          console.log(data);
           displayDrinks(data.drinks, drinkText);
         });
       } else {
-        // will need to replace with modal
-        alert("Error");
+        drinkResultsEl.textContent = "There was an error processing your request.";
       }
     })
     .catch(function (error) {
-      // will need to replace with modal
-      alert("unable to connect");
+      drinkResultsEl.textContent = "Unable to connect to the server.";
     });
 };
 
 var displayRecipes = function (recipes, searchText, mealType, cuisineType) {
   if (recipes.length === 0) {
-    console.log("no recipes found");
     searchResultsEl.textContent = "No recipes found.";
     return;
   }
@@ -165,13 +162,11 @@ var displayRecipes = function (recipes, searchText, mealType, cuisineType) {
   } else if (!searchText && !mealType && cuisineType) {
     recipeSearchTerm.textContent = cuisineType;
   }
-  console.log(recipeSearchTerm);
 
   for (var i = 0; i < recipes.length; i++) {
     var recipeName = recipes[i].recipe.label;
     var recipeUrlSplit = recipes[i].recipe.uri.split("_");
     var recipeId = recipeUrlSplit[1];
-    console.log(recipeId);
 
     var recipeEl = document.createElement("a");
     recipeEl.classList = "search-list-item";
@@ -194,12 +189,10 @@ var displayDrinks = function (drinks, drinkText) {
   drinkResultsEl.textContent = "";
 
   drinkSearchTerm.textContent = drinkText;
-  console.log(drinkSearchTerm);
 
   for (var i = 0; i < drinks.length; i++) {
     var drinkName = drinks[i].strDrink;
     var drinkId = drinks[i].idDrink;
-    console.log(drinkId);
 
     var drinkEl = document.createElement("a");
     drinkEl.classList = "search-list-item";
@@ -331,13 +324,11 @@ $(".day-of-week .list-group").sortable({
         var url = "";
 
         if($(this)[0].classList[1] == "list-group-item-food") {
-          console.log($(this));
           meal = $(this).find("p").text().trim();
           url = $(this).find("a").text().trim();
           recipeType = "food";
         } else {
           recipeType = "drink";
-          console.log($(this));
         }
 
         // add task data to the temp array as an object
@@ -369,7 +360,6 @@ $("#recipe-trash").droppable({
     $(".bottom-trash").removeClass("bottom-trash-active");
   },
   over: function (event, ui) {
-    console.log(ui);
     $(".bottom-trash").addClass("bottom-trash-active");
   },
   out: function (event, ui) {

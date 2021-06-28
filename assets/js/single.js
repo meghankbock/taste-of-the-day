@@ -2,6 +2,8 @@ var currentDate = moment().format('dddd, MMMM Do, YYYY')
 var recipeNameEl = document.querySelector("#single-recipe");
 var recipeContainerEl = document.querySelector("#single-recipe-container");
 var limitWarningEl = document.querySelector("#limit-warning");
+var modalErrorEl = document.querySelector("#modal-error");
+var modalError2El = document.querySelector("#modal-error-2");
 var recipeObj = {
   sunday: [],
   monday: [],
@@ -19,17 +21,14 @@ $("#currentDay").text(currentDate);
 var getRecipeName = function () {
   var recipeId = queryString.split("=")[1];
   recipeId = recipeId.split("&")[0];
-  console.log("recipe ID: " + recipeId);
   var recipeName = queryString.split("=")[2];
-  console.log("recipe name: " + recipeName);
 
   if (recipeName && recipeId) {
 
     getRecipe(recipeId);
   }
   else {
-    console.log("get Recipe Name error");
-    //document.location.replace("./index.html");
+    document.location.replace("./index.html");
   }
 }
 
@@ -37,11 +36,9 @@ var getRecipe = function (recipeId) {
   if (queryString.includes("drinkId")) {
     var apiKey = "1";
     var apiUrl = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + recipeId;
-    console.log(apiUrl)
     fetch(apiUrl).then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          console.log(data);
           singleRecipe = data.drinks[0];
           displayRecipe(data.drinks[0]);
 
@@ -51,8 +48,7 @@ var getRecipe = function (recipeId) {
         });
       }
       else {
-        console.log("get Recipe error");
-        //document.location.replace("./index.html");
+        document.location.replace("./index.html");
       }
     });
   }
@@ -67,12 +63,9 @@ var getRecipe = function (recipeId) {
       apiKey +
       "&type=public";
 
-    console.log(apiUrl);
-
     fetch(apiUrl).then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          console.log(data);
           singleRecipe = data.recipe;
           displayRecipe(data.recipe);
 
@@ -82,8 +75,7 @@ var getRecipe = function (recipeId) {
         });
       }
       else {
-        console.log("get Recipe error");
-        //document.location.replace("./index.html");
+        document.location.replace("./index.html");
       }
     });
   }
@@ -116,7 +108,7 @@ var displayRecipe = function (recipe) {
   
   recipeNameEl.textContent = recipeName;
   if (recipe.length === 0) {
-    alert("error");
+    recipeContainerEl.textContent("Recipe name could not be loaded.");
   }
 
   var recipeImg = document.createElement("img");
@@ -150,12 +142,10 @@ var displayRecipe = function (recipe) {
 };
 
 var loadRecipeLocalStorage = function () {
-  console.log("load local storage");
   recipeObj = JSON.parse(localStorage.getItem("recipes"));
 
   // if nothing in localStorage, create a new object to track all day arrays
   if (!recipeObj) {
-    console.log("local storage empty");
     recipeObj = {
       sunday: [],
       monday: [],
@@ -165,7 +155,6 @@ var loadRecipeLocalStorage = function () {
       friday: [],
       saturday: [],
     };
-    console.log("recipe object: " + recipeObj);
   }
 };
 
@@ -183,7 +172,10 @@ $("#modal-save, #modal-save-2").click(function () {
   if (queryString.includes("drinkId")) {
     day = $("#day-input-2").val();
     if(!day) {
+      modalError2El.textContent = "Please select a day of the week.";
+      return;
     } else {
+      modalError2El.textContent = "";
       recipeName = singleRecipe.strDrink;
       day = day.toLowerCase();
       recipeType = "drink";
@@ -194,18 +186,18 @@ $("#modal-save, #modal-save-2").click(function () {
     day = $("#day-input").val();
     mealType = $("#meal-input").val();
 
-    if (!day && !mealType) {
-      alert("You must provide input for both Day of the Week and Meal Type");
+    if (!day || !mealType) {
+      modalErrorEl.textContent = "Please select both a day of the week and a meal type.";
+      return;
     }
     else {
+      modalErrorEl.textContent = "";
       day = day.toLowerCase();
       mealType = mealType;
       recipeUrl = singleRecipe.url;
       recipeType = "food";
     }
   }
-
-  console.log(recipeObj[day]);
 
     // close modal
     $("#drink-modal").fadeOut();
