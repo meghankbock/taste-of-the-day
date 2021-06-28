@@ -1,4 +1,5 @@
-# taste-of-the-day
+# Taste of the Day - Meal Planner Pal
+
 Project 1 - Interactive Front-End Project
 
 Website - https://meghankbock.github.io/taste-of-the-day/
