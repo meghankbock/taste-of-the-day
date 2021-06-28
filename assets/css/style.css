@@ -1,0 +1,468 @@
+* {
+  margin: 0;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+body {
+  background-image: url(../images/background-photo.jpeg);
+  background-size: 100%;
+  font-family: "Open Sans", sans-serif;
+}
+
+/*page title*/
+.totd {
+  font-size: 80px;
+  font-family: "Cinzel", sans-serif;
+  text-align: center;
+  margin: 3rem;
+}
+/*nav*/
+header nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  margin-bottom: 2rem;
+}
+
+header nav ul li a {
+  padding: 10px 10px;
+  font-size: 1.8vw;
+  color: #f94d00;
+  text-decoration: none;
+  font-family: "Cinzel", sans-serif;
+}
+
+header nav ul li a:hover {
+  color: black;
+  text-shadow: none;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.text-align-center {
+    text-align: center;
+}
+
+.description, #single-result-container {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 5px 20px;
+  border: 3px solid black;
+  border-radius: 15px;
+  margin: 30px 50px;
+  background-color: #ffffff;
+  margin-left: 25%;
+  margin-right: 25%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/*search container as whole*/
+
+.search-css {
+  font-family: "Open Sans", sans-serif;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  border: 3px solid black;
+  border-radius: 15px;
+  background-color: #ffffff;
+  padding: 20;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  margin-right: 5px;
+}
+
+.list {
+  font-family: "Open Sans", sans-serif;
+  list-style: none;
+  text-align: left;
+  padding: 0;
+}
+
+.subtitle {
+  margin-bottom: 0.75rem;
+}
+
+.form-group {
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 0;
+}
+
+.form-label {
+    font-weight: 800;
+    text-align: center;
+}
+
+.form-input {
+  border: 1px solid;
+  border-radius: 15px;
+  display: block;
+  padding: 7px 15px;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.button {
+  width: 50%;
+  background-color: #f94d00;
+  border-radius: 15px;
+  padding: 5px 5px;
+  margin: 3% 25% 2% 25%;
+  font-size: 16px;
+  font-weight: 800;
+  color: white;
+}
+
+.drink-search-css {
+  font-family: "Open Sans", sans-serif;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  border: 3px solid black;
+  border-radius: 15px;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  font-weight: 900;
+  width: 30%;
+}
+
+#search-container, #drink-container {
+  font-family: "Open Sans", sans-serif;
+  padding: 10px 0;
+  background-color: #ffffff;
+  text-align: center;
+  font-weight: 800;
+  width: 100%;
+}
+
+#search-form, #search-form-drink {
+  padding: 0;
+}
+
+#search-results-container, #drink-results-container {
+  font-family: "Open Sans", sans-serif;
+  padding: 10px;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+#search-results, #drink-results {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#recipe-search-term {
+  font-family: "Open Sans", sans-serif;
+  align-items: left;
+}
+
+.search-list-item {
+  position: relative;
+  display: block;
+  padding: 0.5rem 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  width: 100%;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+/*calendar as whole*/
+.calendar-group {
+  margin: 50px 30px;
+}
+
+.current-date {
+  padding: 10px 0;
+  font-family: "Cinzel", sans-serif;
+  text-align: center;
+}
+
+#calendar-container {
+  font-family: "Open Sans", serif;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  padding: 20px 20px;
+  border: 3px solid black;
+  border-radius: 15px;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* calendar by day */
+.day-of-week {
+  border: 3px solid black;
+  border-radius: 15px;
+  padding: 0;
+  margin: auto;
+  min-width: 14%;
+  min-height: 22rem;
+}
+
+.day-header {
+  background-color: #0c94fa;
+  border-radius: 12px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  color: #ffffff;
+  width: 100%;
+  padding: 0.75rem 1.25rem;
+  text-align: center;
+}
+
+.day-header-current {
+  background-color: #f94d00;
+  text-align: center;
+}
+
+.list-group {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+ul.list-group {
+  min-width: 20rem;
+  min-height: 130px;
+  max-width: 21px;
+  text-align: left;
+  list-style: none;
+}
+
+.list-group-item {
+  position: relative;
+  display: block;
+  padding: 0.5rem 0.5rem;
+  background-color: #ffffff;
+  width: 100%;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.list-group-item-food {
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    background-color:  rgba(0, 0, 0, .15);
+}
+
+.list-group-item-drink { 
+    border: 1px solid rgba(12, 148, 250, .5);
+    background-color:  rgba(12, 148, 250, .15);
+}
+
+.recipe-name {
+  font-weight: 700;
+}
+
+.recipe-img {
+    width: 30%;
+}
+
+/*trash*/
+#recipe-trash {
+  margin: 0 auto 50px;
+  text-align: center;
+}
+
+/*footer*/
+footer {
+  width: 100%;
+  padding: 20px 15px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+footer p {
+  font-size: 15px;
+  margin: 0;
+  font-family: "Open Sans";
+}
+
+/*ui*/
+.dropover-active {
+  border: 3px solid #f94d00;
+}
+
+.container {
+  display: none;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  opacity: 0.9;
+  background: #222;
+  z-index: 40000;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+
+  animation-name: fadeIn_Container;
+  animation-duration: 1s;
+}
+
+.modal {
+display:none;
+  min-width: 300px;
+  max-width: 500px;
+  width: 100%;
+  max-height: 400px;
+  margin: 0 auto;
+  position: fixed;
+  z-index: 40001;
+  top: 50%;
+  left: 40%;
+  margin-top: -50px;
+  margin-left: -100px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px #000;
+  animation-name: fadeIn_Modal;
+  animation-duration: 0.8s;
+  border: 1px solid #f94d00;
+}
+
+#single-recipe-container {
+  font-size: 16px;
+  font-weight: 300;
+  padding: 0;
+  text-align: left;
+  list-style-position: inside;
+  margin-bottom: 10px;
+  justify-content: space-evenly;
+}
+
+.single-recipe-container ul {
+  margin: 10px;
+}
+
+.single-recipe-container img, ul, p {
+    margin-top: 10px;
+} 
+
+.recipe-title {
+  font-weight: 800;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+/* MEDIA QUERY FOR SMALLER DESKTOP SCREENS AND SMALLER */
+@media screen and (max-width: 980px) {
+  .totd {
+    margin: 0;
+    text-align: center;
+    font-size: 60px;
+  }
+  header nav ul li a {
+    font-size: 20px;
+  }
+
+  body {
+    background-size: 100%;
+  }
+  .description {
+    width: 100%;
+    margin: 0;
+  }
+  .search-css {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+  .list-group {
+    flex: 0 100%;
+    text-align: center;
+    justify-content: center;
+  }
+  .drink-search-css {
+    flex: 0 100%;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+.content {
+    margin-top: 10px;
+}
+
+/* MEDIA QUERY FOR TABLETS AND SMALLER */
+@media screen and (max-width: 768px) {
+  .totd {
+    margin: 0;
+    text-align: center;
+    font-size: 60px;
+  }
+  header nav ul li a {
+    font-size: 20px;
+  }
+
+  body {
+    background-size: 100%;
+  }
+  .description {
+    width: 100%;
+    margin: 0;
+  }
+  .search-css {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+  .list-group {
+    flex: 0 100%;
+    text-align: center;
+    justify-content: center;
+  }
+  .drink-search-css {
+    flex: 0 100%;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .totd {
+    margin: 0;
+    text-align: center;
+    font-size: 60px;
+  }
+  header nav ul li a {
+    font-size: 20px;
+  }
+
+  body {
+    background-size: 100%;
+  }
+  .description {
+    width: 100%;
+    margin: 0;
+  }
+  .search-css {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+  .list-group {
+    flex: 0 100%;
+    text-align: center;
+    justify-content: center;
+  }
+  .drink-search-css {
+    flex: 0 100%;
+    text-align: center;
+    justify-content: center;
+  }
+}
